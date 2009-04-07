@@ -7,12 +7,15 @@ lib/appengine-apis.rb
 lib/appengine-apis/apiproxy.rb
 lib/appengine-apis/datastore.rb
 lib/appengine-apis/datastore_types.rb
+lib/appengine-apis/logger.rb
+lib/appengine-apis/merb-logger.rb
 lib/appengine-apis/testing.rb
 script/console
 script/destroy
 script/generate
 spec/datastore_spec.rb
 spec/datastore_types_spec.rb
+spec/logger_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 tasks/rspec.rake

@@ -147,5 +147,4 @@ describe AppEngine::Datastore::Query do
     q.fetch.to_a.should == [@aa, @a]
   end
 
-  pending "test filters"
 end

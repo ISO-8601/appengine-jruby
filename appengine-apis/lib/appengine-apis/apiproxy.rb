@@ -24,13 +24,23 @@ module AppEngine
   
   import Java.com.google.apphosting.api.ApiProxy
   
-  class ApiProxy
-    def self.get_app_id
+  class << ApiProxy
+    def get_app_id
       get_current_environment.getAppId
     end
   
-    def self.get_auth_domain
+    def get_auth_domain
       get_current_environment.getAuthDomain
+    end
+    
+    alias :add_log_record :log
+    
+    def log(level, message)
+      message = (message || "").to_s.chomp
+      return if message.nil? || message.empty?
+      record = LogRecord.new(
+          level, java.lang.System.currentTimeMillis() * 1000, message.to_s)
+      add_log_record(record)
     end
   end
 end

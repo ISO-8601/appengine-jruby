@@ -22,6 +22,9 @@ require 'appengine-apis/apiproxy'
 
 module AppEngine
   module Testing
+    import com.google.appengine.tools.development.ApiProxyLocalFactory
+    import com.google.appengine.api.datastore.dev.LocalDatastoreService
+
     class TestEnv  # :nodoc:
       include AppEngine::ApiProxy::Environment
       
@@ -71,34 +74,40 @@ module AppEngine
       end      
     end
     
-    import com.google.appengine.tools.development.ApiProxyLocalImpl
-    class LocalDatastore < ApiProxyLocalImpl  # :nodoc:
-      include ApiProxy::Delegate
-      import com.google.appengine.api.datastore.dev.LocalDatastoreService
-      
-      def initialize
-        super(java.io.File.new('.'))
-        set_property(LocalDatastoreService::NO_STORAGE_PROPERTY, "true")
-        set_property(LocalDatastoreService::MAX_QUERY_LIFETIME_PROPERTY,
-                     java.lang.Integer::MAX_VALUE.to_s)
-        set_property(LocalDatastoreService::MAX_TRANSACTION_LIFETIME_PROPERTY,
-                     java.lang.Integer::MAX_VALUE.to_s)
-      end
-    end
-    
     class << self
-      
       def install_test_env
         env = TestEnv.new
         ApiProxy::setEnvironmentForCurrentThread(env)
         env
       end
       
+      def factory
+        @factory ||= ApiProxyLocalFactory.new
+      end
+      
+      def app_dir
+        file = factory.getApplicationDirectory
+        file && file.path
+      end
+      
+      def app_dir=(dir)
+        factory.setApplicationDirectory(java.io.File.new(dir))
+      end
+      
       # Force all datastore operations to use an in-memory datastore.
       def install_local_datastore
-        datastore = LocalDatastore.new
-        ApiProxy::setDelegate(datastore)
-        datastore
+        self.app_dir = '.' if app_dir.nil?
+        delegate = factory.create
+        delegate.set_property(
+            LocalDatastoreService::NO_STORAGE_PROPERTY, "true")
+        delegate.set_property(
+            LocalDatastoreService::MAX_QUERY_LIFETIME_PROPERTY,
+            java.lang.Integer::MAX_VALUE.to_s)
+        delegate.set_property(
+            LocalDatastoreService::MAX_TRANSACTION_LIFETIME_PROPERTY,
+            java.lang.Integer::MAX_VALUE.to_s)
+        ApiProxy::setDelegate(delegate)
+        delegate
       end
       
     end
