@@ -38,7 +38,7 @@ module AppEngine
     def log(level, message)
       message = (message || "").to_s.chomp
       return if message.nil? || message.empty?
-      record = LogRecord.new(
+      record = AppEngine::ApiProxy::LogRecord.new(
           level, java.lang.System.currentTimeMillis() * 1000, message.to_s)
       add_log_record(record)
     end
