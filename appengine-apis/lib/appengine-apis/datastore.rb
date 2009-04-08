@@ -452,7 +452,7 @@ module Datastore
     #     the query, not the actual results returned.
     #
     def convert_options(options)
-      default_size = 
+      return options if options.java_kind_of? FetchOptions
       limit = options.delete(:limit)
       offset = options.delete(:offset)
       chunk_size = options.delete(:chunk) || FetchOptions::DEFAULT_CHUNK_SIZE
