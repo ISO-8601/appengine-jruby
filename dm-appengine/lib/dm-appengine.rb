@@ -35,7 +35,7 @@ module DataMapper
             rescue NoMethodError
               AppEngine::Testing::install_test_env
             end
-            AppEngine::Testing::install_local_datastore
+            AppEngine::Testing::install_test_datastore
           end
         end
         @resource_naming_convention = lambda do |value|

@@ -95,7 +95,7 @@ module AppEngine
       end
       
       # Force all datastore operations to use an in-memory datastore.
-      def install_local_datastore
+      def install_test_datastore
         self.app_dir = '.' if app_dir.nil?
         delegate = factory.create
         delegate.set_property(
@@ -106,6 +106,13 @@ module AppEngine
         delegate.set_property(
             LocalDatastoreService::MAX_TRANSACTION_LIFETIME_PROPERTY,
             java.lang.Integer::MAX_VALUE.to_s)
+        ApiProxy::setDelegate(delegate)
+        delegate
+      end
+      
+      def install_api_stubs
+        self.app_dir = '.' if app_dir.nil?
+        delegate = factory.create
         ApiProxy::setDelegate(delegate)
         delegate
       end

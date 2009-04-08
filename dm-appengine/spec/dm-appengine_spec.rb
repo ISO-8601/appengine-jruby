@@ -21,7 +21,7 @@ require 'dm-core/spec/adapter_shared_spec'
 describe 'DataMapper::Adapters::AppEngineAdapter' do
   before :all do
     AppEngine::Testing.install_test_env
-    AppEngine::Testing.install_local_datastore
+    AppEngine::Testing.install_test_datastore
     
     class ::Heffalump
       include DataMapper::Resource
@@ -39,7 +39,7 @@ describe 'DataMapper::Adapters::AppEngineAdapter' do
     @adapter = DataMapper.setup(:default, "app_engine://memory")
     @repository = DataMapper.repository(@adapter.name)
     
-    AppEngine::Testing.install_local_datastore
+    AppEngine::Testing.install_test_datastore
     @heff1 = @model.create(
         :color => 'Black', :num_spots => 0, :striped => true)
     @heff2 = @model.create(

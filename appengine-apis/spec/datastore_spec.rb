@@ -20,7 +20,7 @@ describe AppEngine::Datastore do
   Datastore = AppEngine::Datastore
   
   before :each do
-    AppEngine::Testing.install_local_datastore
+    AppEngine::Testing.install_test_datastore
   end
   
   it "should support get/put" do
@@ -93,7 +93,7 @@ describe AppEngine::Datastore::Query do
   Query = AppEngine::Datastore::Query
   
   before :all do
-    AppEngine::Testing.install_local_datastore
+    AppEngine::Testing.install_test_datastore
     @a = Datastore::Entity.new("A")
     @a['name'] = 'a'
     Datastore.put(@a)
