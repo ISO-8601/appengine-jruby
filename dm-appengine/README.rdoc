@@ -12,7 +12,3 @@ supported. Or is only supported for fetching several entities by the Key.
 - DataMapper likes to lazily load properties. The Datastore always sets and
   returns all properties on an entity. If you have lazily loaded properties
   strange things will happen (like properties potentially disappearing).
-
-- Update does a get then a put. There's no reason to do the get if we can
-  save the Entity in the resource whenever we get it from the Datastore.
-  Doing this probably requires a custom Resource type, like the CouchDB adapter.

@@ -18,7 +18,7 @@
 require File.dirname(__FILE__) + '/spec_helper'
 require 'dm-core/spec/adapter_shared_spec'
 
-describe 'DataMapper::Adapters::AppEngineAdapter' do
+describe DataMapper::Adapters::AppEngineAdapter do
   before :all do
     AppEngine::Testing.install_test_env
     AppEngine::Testing.install_test_datastore

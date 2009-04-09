@@ -75,11 +75,13 @@ module DataMapper
           entities << entity
           created += 1
         end
-        keys = Datastore.put(entities)
-        resources.zip(keys.to_a) do |resource, key|
+        Datastore.put(entities)
+        resources.zip(entities) do |resource, entity|
+          key = entity.key
           if identity_field = resource.model.identity_field(name)
             identity_field.set!(resource, key.get_name || key.get_id)
           end
+          resource.instance_variable_set :@__entity__, entity
         end
         return created
       end
@@ -89,27 +91,23 @@ module DataMapper
         query.run
       end
 
-      def update(attributes, query)
-        query = QueryBuilder.new(query, kind(query.model), self)
-        raise NotImplementedError unless query.is_get?
-        raise NotImplementedError unless query.keys.size == 1
-        
-        entity = Datastore.get(query.keys[0])
-        attributes.each_pair do |property, value|
-          # TODO skip key
-          entity.set_property(property.field, value)
+      def update(attributes, collection)
+        attributes = attributes_as_fields(attributes)
+        entities = collection.collect do |resource|
+          entity = resource.instance_variable_get :@__entity__
+          entity.update(attributes)
         end
 
-        Datastore.put(entity)
-        1
+        Datastore.put(entities)
+        entities.size
       end
 
-      def delete(query)
-        query = QueryBuilder.new(query, kind(query.model), self)
-        raise NotImplementedError unless query.is_get?
-        deleted = query.keys
-        Datastore.delete(deleted)
-        deleted.size
+      def delete(collection)
+        keys = collection.collect do |resource|
+          entity = resource.instance_variable_get :@__entity__
+          entity.key
+        end
+        Datastore.delete(keys)
       end
     
       class QueryBuilder
@@ -279,8 +277,8 @@ module DataMapper
           else
             LESS_THAN_OR_EQUAL
           end
-          @query.add_filter(name, begin_op, range.begin)
-          @query.add_filter(name, end_op, range.end)
+          @query.filter(name, begin_op, range.begin)
+          @query.filter(name, end_op, range.end)
         end
       
         def is_get?
@@ -289,7 +287,7 @@ module DataMapper
       
         def get_entities
           if is_get?
-            Datastore.get(@keys).values
+            Datastore.get(@keys)
           else
             begin
               chunk_size = FetchOptions::DEFAULT_CHUNK_SIZE
@@ -313,6 +311,7 @@ module DataMapper
       
         def entity_to_model(key_prop, entity)
           # TODO: This is broken. We should be setting all properties
+          return if entity.nil?
           key = entity.get_key
           values = @dm_query.fields.map do |property|
             if property.key?
@@ -321,7 +320,9 @@ module DataMapper
               entity.get_property(property.field)
             end
           end
-          @model.load(values, @dm_query)
+          resource = @model.load(values, @dm_query)
+          resource.instance_variable_set :@__entity__, entity
+          resource
         end
       
         def keys
