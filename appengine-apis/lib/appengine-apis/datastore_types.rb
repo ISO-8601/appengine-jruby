@@ -280,6 +280,14 @@ module AppEngine
       end
       alias :has_property :has_property?
       
+      def update(hash)
+        hash.each do |name, value|
+          self[name] = value
+        end
+        self
+      end
+      alias merge! update
+      
       # Iterates over all the properties in this Entity.
       def each(&proc)  # :yields: name, value
         getProperties.each(&proc)
