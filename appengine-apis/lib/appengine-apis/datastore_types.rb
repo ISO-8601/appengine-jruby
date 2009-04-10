@@ -280,7 +280,9 @@ module AppEngine
       end
       alias :has_property :has_property?
       
-      def update(hash)
+      # Add the properties from +other+ to this Entity.
+      # Other may be an Entity or Hash
+      def update(other)
         hash.each do |name, value|
           self[name] = value
         end
