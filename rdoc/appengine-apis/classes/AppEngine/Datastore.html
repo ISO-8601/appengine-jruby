@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: AppEngine::Datastore</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">AppEngine::Datastore</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/appengine-apis/datastore_rb.html">
+                lib/appengine-apis/datastore.rb
+                </a>
+        <br />
+                <a href="../../files/lib/appengine-apis/datastore_types_rb.html">
+                lib/appengine-apis/datastore_types.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The <tt><a href="Datastore.html">Datastore</a></tt> provides access to a
+schema-less data storage system. The fundamental unit of data in this
+system is the <tt>Entity</tt>, which has an immutable identity (represented
+by a <tt>Key</tt>) and zero of more mutable properties. <tt>Entity</tt>
+objects can be created, updated, deleted, retrieved by identifier, and
+queried via a combination of properties.
+</p>
+<p>
+The <tt><a href="Datastore.html">Datastore</a></tt> can be used
+transactionally and supports the notion of a &quot;current&quot; <a
+href="Datastore.html#M000009">transaction</a>. A current <a
+href="Datastore.html#M000009">transaction</a> is established by calling <a
+href="Datastore.html#M000006">begin_transaction</a>. The <a
+href="Datastore.html#M000009">transaction</a> returned by this method
+ceases to be current when an attempt is made to commit or rollback or when
+another call is made to <a
+href="Datastore.html#M000006">begin_transaction</a>. A <a
+href="Datastore.html#M000009">transaction</a> can only be current within
+the <tt>Thread</tt> that created it.
+</p>
+<p>
+The various overloads of <a href="Datastore.html#M000004">put</a>, <a
+href="Datastore.html#M000003">get</a>, and <a
+href="Datastore.html#M000005">delete</a> all support transactions. Users of
+this class have the choice of explicitly passing a (potentially null)
+<tt>Transaction</tt> to these methods or relying on the current <a
+href="Datastore.html#M000009">transaction</a>.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000008">active_transactions</a>&nbsp;&nbsp;
+      <a href="#M000006">begin_transaction</a>&nbsp;&nbsp;
+      <a href="#M000007">current_transaction</a>&nbsp;&nbsp;
+      <a href="#M000005">delete</a>&nbsp;&nbsp;
+      <a href="#M000003">get</a>&nbsp;&nbsp;
+      <a href="#M000004">put</a>&nbsp;&nbsp;
+      <a href="#M000009">transaction</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="Datastore/Blob.html" class="link">AppEngine::Datastore::Blob</a><br />
+Class <a href="Datastore/ByteString.html" class="link">AppEngine::Datastore::ByteString</a><br />
+Class <a href="Datastore/Entity.html" class="link">AppEngine::Datastore::Entity</a><br />
+Class <a href="Datastore/EntityNotFound.html" class="link">AppEngine::Datastore::EntityNotFound</a><br />
+Class <a href="Datastore/Error.html" class="link">AppEngine::Datastore::Error</a><br />
+Class <a href="Datastore/InternalError.html" class="link">AppEngine::Datastore::InternalError</a><br />
+Class <a href="Datastore/Key.html" class="link">AppEngine::Datastore::Key</a><br />
+Class <a href="Datastore/Link.html" class="link">AppEngine::Datastore::Link</a><br />
+Class <a href="Datastore/NeedIndex.html" class="link">AppEngine::Datastore::NeedIndex</a><br />
+Class <a href="Datastore/Query.html" class="link">AppEngine::Datastore::Query</a><br />
+Class <a href="Datastore/Rollback.html" class="link">AppEngine::Datastore::Rollback</a><br />
+Class <a href="Datastore/Text.html" class="link">AppEngine::Datastore::Text</a><br />
+Class <a href="Datastore/Timeout.html" class="link">AppEngine::Datastore::Timeout</a><br />
+Class <a href="Datastore/TooManyResults.html" class="link">AppEngine::Datastore::TooManyResults</a><br />
+Class <a href="Datastore/TransactionFailed.html" class="link">AppEngine::Datastore::TransactionFailed</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">JavaDatastore</td>
+          <td>=</td>
+          <td class="context-item-value">Java.ComGoogleAppengineApiDatastore</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Key</td>
+          <td>=</td>
+          <td class="context-item-value">JavaDatastore::Key</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Entity</td>
+          <td>=</td>
+          <td class="context-item-value">JavaDatastore::Entity</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SPECIAL_RUBY_TYPES</td>
+          <td>=</td>
+          <td class="context-item-value">[Time, Text, Blob, ByteString, Link].freeze</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">active_transactions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns all Transactions started by this thread upon which no attempt to
+commit or rollback has been made.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 169</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active_transactions</span>
+    <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-ivar">@@db</span>.<span class="ruby-identifier">active_transactions</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="#M000006" class="method-signature">
+          <span class="method-name">begin_transaction</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Begins a <a href="Datastore.html#M000009">transaction</a> agains the
+datastore. Callers are responsible for explicitly calling
+Transaction.commit or Transaction.rollback when they no longer need the
+Transaction.
+</p>
+<p>
+The Transaction returned by this call will be considered the current <a
+href="Datastore.html#M000009">transaction</a> and will be returned by
+subsequent, same-thread calls to <a
+href="Datastore.html#M000007">current_transaction</a> until one of the
+following happens:
+</p>
+<pre>
+ 1. #begin_transaction is invoked from the same thread. In this case
+    #current_transaction will return the result of the more recent
+    call to #begin_transaction.
+ 2. #Transaction.commit is invoked on the Transaction returned by
+    this method.  Whether or not the commit succeeds, the
+    Transaction will no longer be current.
+ 3. #Transaction.rollback is invoked on the Transaction returned by
+    this method.  Whether or not the rollback succeeds, the
+    Transaction will no longer be current.
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 143</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">begin_transaction</span>
+    <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-ivar">@@db</span>.<span class="ruby-identifier">begin_transaction</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">Datastore.current_transaction &rarr; transaction || IndexError<br />
+Datastore.current_transaction(default) &rarr; transaction<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the current <a href="Datastore.html#M000009">transaction</a> for
+this thread. The current <a href="Datastore.html#M000009">transaction</a>
+is defined as the result of the most recent, same-thread invocation of <a
+href="Datastore.html#M000006">begin_transaction</a> that has not been
+committed or rolled back.
+</p>
+<p>
+Raises IndexError if there is no current <a
+href="Datastore.html#M000009">transaction</a> and no default is specified.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 160</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_transaction</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-ivar">@@db</span>.<span class="ruby-identifier">current_transaction</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">Datastore.delete(transaction=current_transaction, key)<br />
+Datastore.delete(transaction=current_transaction, [keys])<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Deletes one or more entities from the datastore.
+</p>
+<p>
+If <a href="Datastore.html#M000009">transaction</a> is specified this
+operation will execute within that <a
+href="Datastore.html#M000009">transaction</a> instead of the current <a
+href="Datastore.html#M000009">transaction</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 118</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">args</span> = <span class="ruby-identifier">extract_tx</span>(<span class="ruby-identifier">args</span>)
+      <span class="ruby-ivar">@@db</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">Datastore.get(transaction=current_transaction, key) &rarr; Entity<br />
+Datastore.get(transaction=current_transaction, [keys]) &rarr; Entities<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Retrieves one or more entities from the datastore.
+</p>
+<p>
+Retrieves the entity or entities with the given key(s) from the datastore
+and returns them as fully populated Entity objects, as defined below. If
+there is an error, raises a subclass of <a
+href="Datastore/Error.html">Datastore::Error</a>.
+</p>
+<p>
+With a single key, an Entity will be returned, or <a
+href="Datastore/EntityNotFound.html">EntityNotFound</a> will be raised if
+no existing entity matches the key.
+</p>
+<p>
+With an array of keys, an array of entities will be returned that
+corresponds to the sequence of keys. It will include entities for keys that
+were found and None placeholders for keys that were not found.
+</p>
+<p>
+If <a href="Datastore.html#M000009">transaction</a> is specified, it will
+be used instead of the current <a
+href="Datastore.html#M000009">transaction</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 73</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">args</span> = <span class="ruby-identifier">extract_tx</span>(<span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">entities</span> = <span class="ruby-ivar">@@db</span>.<span class="ruby-identifier">get</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">entities</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-identifier">java</span>.<span class="ruby-identifier">util</span>.<span class="ruby-constant">Map</span>
+        <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">-1</span>]
+        <span class="ruby-identifier">entities</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">entities</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">entities</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">Datastore.put(transaction=current_transaction, entity) &rarr; Key<br />
+Datastore.put(transaction=current_transaction, entities) &rarr; Keys<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Store one or more entities in the datastore.
+</p>
+<p>
+The entities may be new or previously existing. For new entities, <a
+href="Datastore.html#M000004">put</a> will fill in the app id and key
+assigned by the datastore.
+</p>
+<p>
+If the argument is a single Entity, a single Key will be returned. If the
+argument is an array of Entity, an Enumerable of Keys will be returned.
+</p>
+<p>
+If <a href="Datastore.html#M000009">transaction</a> is specified this
+operation will execute within that <a
+href="Datastore.html#M000009">transaction</a> instead of the current <a
+href="Datastore.html#M000009">transaction</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 102</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">put</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">args</span> = <span class="ruby-identifier">extract_tx</span>(<span class="ruby-identifier">args</span>)
+      <span class="ruby-ivar">@@db</span>.<span class="ruby-identifier">put</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">transaction</span><span class="method-args">(retries=0) {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Runs the block inside a <a href="Datastore.html#M000009">transaction</a>.
+Every <a href="Datastore.html#M000003">get</a>, <a
+href="Datastore.html#M000004">put</a>, and <a
+href="Datastore.html#M000005">delete</a> call in the block is made within
+the <a href="Datastore.html#M000009">transaction</a>, unless another <a
+href="Datastore.html#M000009">transaction</a> is explicitly specified.
+</p>
+<p>
+The block may raise any exception to roll back the <a
+href="Datastore.html#M000009">transaction</a> instead of committing it. If
+this happens, the <a href="Datastore.html#M000009">transaction</a> will be
+rolled back and the exception will be re-raised up to <a
+href="Datastore.html#M000009">transaction</a>&#8216;s caller.
+</p>
+<p>
+If you want to roll back intentionally, but don&#8216;t have an appropriate
+exception to raise, you can raise an instance of <a
+href="Datastore/Rollback.html">Datastore::Rollback</a>. It will cause a
+rollback, but will <b>not</b> be re-raised up to the caller.
+</p>
+<p>
+If retries is greater than 0 and the <a
+href="Datastore.html#M000009">transaction</a> fails to commit, the block
+may be run more than once, so it should be idempotent. It should avoid side
+effects, and it shouldn&#8216;t have <b>any</b> side effects that
+aren&#8216;t safe to occur multiple times. However, this doesn&#8216;t
+include Put, Get, and Delete calls, of course.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 193</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction</span>(<span class="ruby-identifier">retries</span>=<span class="ruby-value">0</span>)
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">retries</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">retries</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">tx</span> = <span class="ruby-identifier">begin_transaction</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">yield</span>
+        <span class="ruby-identifier">tx</span>.<span class="ruby-identifier">commit</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Rollback</span>
+        <span class="ruby-identifier">tx</span>.<span class="ruby-identifier">rollback</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">TransactionFailed</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-identifier">ex</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">retries</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">tx</span>.<span class="ruby-identifier">rollback</span>
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">java</span>.<span class="ruby-identifier">lang</span>.<span class="ruby-constant">IllegalStateException</span>
+          <span class="ruby-comment cmt"># already commited/rolled back. ignore</span>
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">java</span>.<span class="ruby-identifier">util</span>.<span class="ruby-constant">NoSuchElementException</span>
+          <span class="ruby-comment cmt"># already commited/rolled back. ignore</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionFailed</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
