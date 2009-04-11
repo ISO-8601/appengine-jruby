@@ -6,6 +6,11 @@
 
 APIs and utilities for using JRuby on Google App Engine.
 
+See these classes for an overview of each API:
+- AppEngine::Datastore
+- AppEngine::Logger
+- AppEngine::Testing
+
 == REQUIREMENTS:
 
 * Google App Engine SDK for Java (http://code.google.com/appengine)

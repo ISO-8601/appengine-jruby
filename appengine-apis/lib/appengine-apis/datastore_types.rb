@@ -35,20 +35,42 @@ module AppEngine
   module Datastore
     JavaDatastore = Java.ComGoogleAppengineApiDatastore
     
+    # Base class of Datastore Errors
     class Error < StandardError; end
+    
+    # Raised when a query requires a Composite index that does not exist
     class NeedIndex < Error; end
+    
+    # The datastore operation timed out. This can happen when you attempt to
+    # put, get, or delete too many entities or an entity with too many
+    # properties, or if the datastore is overloaded or having trouble.
     class Timeout < Error; end
+    
+    # An internal datastore error. Please report this to Google.
     class InternalError < Error; end
+    
+    # May be raised during a call to #transaction to abort and rollback the
+    # transaction. Note that *any* exception raised by a transaction
+    # block will cause a rollback. This is purely for convenience.
     class Rollback < Error; end
+    
+    # Raised when a transaction could not be committed, usually due to
+    # contention.
     class TransactionFailed < Error; end
+    
+    # Raised by #get when the requested entity is not found.
     class EntityNotFound < Error; end
+    
+    # Raised by Datastore::Query.entity if the query returns more
+    # than one entity
     class TooManyResults < Error; end
     
-    #A long string type.
+    # A long string type.
     # 
     # Strings of any length can be stored in the datastore using this
     # type.
     #
+    # Not indexed.
     class Text < String
       def to_java
         JavaDatastore::Text.new(self.to_java_string)
@@ -60,6 +82,7 @@ module AppEngine
     end
     
     # A blob type, appropriate for storing binary data of any length.
+    # Not indexed.
     class Blob < String
       def to_java
         JavaDatastore::Blob.new(self.to_java_bytes)

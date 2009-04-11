@@ -21,6 +21,9 @@
 require 'merb-core/logger'
 
 module Merb
+  
+  # Modifies the Merb Logger class to save logs using the Logging API
+  # instead of writing directly to a stream.
   class Logger
     def <<(string = nil)
       AppEngine::ApiProxy.log(

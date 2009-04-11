@@ -209,7 +209,7 @@ return entities with the given <a href="Query.html#M000012">ancestor</a>.
             onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000010-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 276</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 294</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
       <span class="ruby-ivar">@query</span> = <span class="ruby-constant">JQuery</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
     <span class="ruby-keyword kw">end</span>
@@ -234,7 +234,7 @@ return entities with the given <a href="Query.html#M000012">ancestor</a>.
             onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000012-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 285</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 303</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ancestor</span>
       <span class="ruby-ivar">@query</span>.<span class="ruby-identifier">ancestor</span>
     <span class="ruby-keyword kw">end</span>
@@ -276,7 +276,7 @@ href="Query.html#M000011">kind</a>.
             onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000013-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 301</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 319</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ancestor=</span>(<span class="ruby-identifier">key</span>)
       <span class="ruby-constant">Datastore</span>.<span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
         <span class="ruby-ivar">@query</span>.<span class="ruby-identifier">set_ancestor</span>(<span class="ruby-identifier">key</span>)
@@ -324,7 +324,7 @@ of the query, not the actual results returned.
             onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000026-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 454</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 472</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">convert_options</span>(<span class="ruby-identifier">options</span>)
       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">java_kind_of?</span> <span class="ruby-constant">FetchOptions</span>
       <span class="ruby-identifier">limit</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:limit</span>)
@@ -360,7 +360,7 @@ Returns the number of entities that currently match this query.
             onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000019-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 378</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 396</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>
       <span class="ruby-identifier">pquery</span>.<span class="ruby-identifier">count</span>
     <span class="ruby-keyword kw">end</span>
@@ -391,7 +391,7 @@ See <a href="Query.html#M000026">convert_options</a> for supported options
             onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000021-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 400</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 418</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-identifier">options</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">proc</span>)  <span class="ruby-comment cmt"># :yields: entity</span>
       <span class="ruby-identifier">options</span> = <span class="ruby-identifier">convert_options</span>(<span class="ruby-identifier">options</span>)
       <span class="ruby-constant">Datastore</span>.<span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -428,7 +428,7 @@ Returns the single, matching result, or nil if no entities match
             onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000020-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 389</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 407</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">entity</span>
       <span class="ruby-constant">Datastore</span>.<span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
         <span class="ruby-identifier">pquery</span>.<span class="ruby-identifier">as_single_entity</span>
@@ -459,7 +459,7 @@ datastore.
             onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000023-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 422</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 440</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">options</span>={})
       <span class="ruby-identifier">options</span> = <span class="ruby-identifier">convert_options</span>(<span class="ruby-identifier">options</span>)
       <span class="ruby-constant">Datastore</span>.<span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -497,7 +497,7 @@ documentation</a>
             onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000015-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 337</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 355</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-identifier">value</span>)
       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Symbol</span>
       <span class="ruby-identifier">value</span> = <span class="ruby-constant">Datastore</span>.<span class="ruby-identifier">ruby_to_java</span>(<span class="ruby-identifier">value</span>)
@@ -527,7 +527,7 @@ href="Query.html#M000015">filter</a> predicates.
             onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000017-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 368</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 386</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filter_predicates</span>
       <span class="ruby-ivar">@query</span>.<span class="ruby-identifier">getFilterPredicates</span>
     <span class="ruby-keyword kw">end</span>
@@ -556,7 +556,7 @@ See <a href="Query.html#M000026">convert_options</a> for supported options
             onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000022-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 411</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 429</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">iterator</span>(<span class="ruby-identifier">options</span>={})
       <span class="ruby-identifier">options</span> = <span class="ruby-identifier">convert_options</span>(<span class="ruby-identifier">options</span>)
       <span class="ruby-constant">Datastore</span>.<span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -586,7 +586,7 @@ href="Query.html">Query</a> for this query.
             onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000025-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 437</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 455</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">java_query</span>
       <span class="ruby-ivar">@query</span>
     <span class="ruby-keyword kw">end</span>
@@ -609,7 +609,7 @@ href="Query.html">Query</a> for this query.
             onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000011-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 280</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 298</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kind</span>
       <span class="ruby-ivar">@query</span>.<span class="ruby-identifier">kind</span>
     <span class="ruby-keyword kw">end</span>
@@ -635,7 +635,7 @@ Returns a Java.ComGoogleAppengineApiDatastore.PreparedQuery for this query.
             onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000024-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 432</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 450</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pquery</span>
       <span class="ruby-ivar">@pquery</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Datastore</span>.<span class="ruby-identifier">service</span>.<span class="ruby-identifier">prepare</span>(<span class="ruby-ivar">@query</span>)
     <span class="ruby-keyword kw">end</span>
@@ -678,7 +678,7 @@ href="Query.html#M000011">kind</a>.
             onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000014-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 323</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 341</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_ancestor</span>(<span class="ruby-identifier">key</span>)
       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">ancestor</span> = <span class="ruby-identifier">key</span>
       <span class="ruby-keyword kw">self</span>
@@ -728,7 +728,7 @@ Returns self (for chaining)
             onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000016-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 361</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 379</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">direction</span>=<span class="ruby-constant">ASCENDING</span>)
       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Symbol</span>
       <span class="ruby-ivar">@query</span>.<span class="ruby-identifier">add_sort</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">direction</span>)
@@ -757,7 +757,7 @@ href="Query.html#M000016">sort</a> predicates.
             onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000018-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 373</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 391</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort_predicates</span>
       <span class="ruby-ivar">@query</span>.<span class="ruby-identifier">getSortPredicates</span>
     <span class="ruby-keyword kw">end</span>

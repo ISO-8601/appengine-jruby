@@ -18,9 +18,18 @@
 #
 # Helpers for installing stub apis in unit tests.
 
+
 require 'appengine-apis/apiproxy'
 
 module AppEngine
+  
+  # Local testing support for Google App Engine
+  #
+  # If you run your code on Google's servers or under dev_appserver,
+  # the api's are already configured.
+  #
+  # To run outside this environment, you need to install a test environment and
+  # api stubs.
   module Testing
     import com.google.appengine.tools.development.ApiProxyLocalFactory
     import com.google.appengine.api.datastore.dev.LocalDatastoreService
@@ -75,26 +84,43 @@ module AppEngine
     end
     
     class << self
+      
+      # Install a test environment for the current thread.
+      #
+      # You must call this before making any api calls.
+      #
+      # Note that Google's production and local environments are
+      # single threaded. You may run into problems if you use multiple
+      # threads.
       def install_test_env
         env = TestEnv.new
         ApiProxy::setEnvironmentForCurrentThread(env)
         env
       end
       
-      def factory
+      def factory  # :nodoc:
         @factory ||= ApiProxyLocalFactory.new
       end
       
+      # The application directory, or '.' if not set.
+      # Composite index definitions are written to "#{app_dir}/WEB-INF/".
       def app_dir
         file = factory.getApplicationDirectory
         file && file.path
       end
-      
+
+      # Sets the application directory. Should be called before
+      # creating stubs.
+      #
+      # Composite index definitions are written to "#{app_dir}/WEB-INF/".      
       def app_dir=(dir)
         factory.setApplicationDirectory(java.io.File.new(dir))
       end
       
-      # Force all datastore operations to use an in-memory datastore.
+      # Install stub apis and force all datastore operations to use
+      # an in-memory datastore.
+      #
+      # You may call this multiple times to reset to a new in-memory datastore.
       def install_test_datastore
         self.app_dir = '.' if app_dir.nil?
         delegate = factory.create
@@ -110,6 +136,12 @@ module AppEngine
         delegate
       end
       
+      # Install stub apis. The datastore will be written to the disk
+      # inside #app_dir.
+      #
+      # You could potentially use this to run under a ruby web server
+      # instead of dev_appserver. In that case you will need to install
+      # and configure a test environment for each request.
       def install_api_stubs
         self.app_dir = '.' if app_dir.nil?
         delegate = factory.create

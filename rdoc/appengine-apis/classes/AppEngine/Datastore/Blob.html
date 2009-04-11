@@ -80,7 +80,8 @@
 
     <div id="description">
       <p>
-A blob type, appropriate for storing binary data of any length.
+A blob type, appropriate for storing binary data of any length. Not
+indexed.
 </p>
 
     </div>
@@ -129,7 +130,7 @@ A blob type, appropriate for storing binary data of any length.
             onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000030-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 68</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 91</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_from_java</span>(<span class="ruby-identifier">blob</span>)
         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_java_bytes</span>(<span class="ruby-identifier">blob</span>.<span class="ruby-identifier">getBytes</span>))
       <span class="ruby-keyword kw">end</span>
@@ -154,7 +155,7 @@ A blob type, appropriate for storing binary data of any length.
             onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000029-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 64</span>
+<span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 87</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_java</span>
         <span class="ruby-constant">JavaDatastore</span><span class="ruby-operator">::</span><span class="ruby-constant">Blob</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_java_bytes</span>)
       <span class="ruby-keyword kw">end</span>

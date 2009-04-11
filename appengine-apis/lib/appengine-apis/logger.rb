@@ -19,10 +19,23 @@
 # Replacement for the standard logger.rb which uses the Google App Engine
 # logging API.
 
+
 require 'appengine-apis/apiproxy'
 require 'logger'
 
 module AppEngine
+  
+  # Replacement for the standard logger.rb. Saves logs to the App Engine
+  # Dashboard (or to the java logging api when running locally).
+  #
+  #   logger = AppEngine::Logger.new
+  #   logger.warn "foobar"
+  #
+  # or (for compatibility with code already using logger.rb)
+  #
+  #  Logger = AppEngine::Logger
+  #  logger = Logger.new(stream)  # stream is ignored
+  #  logger.info "Hello, dashboard"
   class Logger < ::Logger
     SEVERITIES = {
       DEBUG => ApiProxy::LogRecord::Level::debug,

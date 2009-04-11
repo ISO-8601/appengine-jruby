@@ -29,12 +29,12 @@ require 'appengine-apis/datastore_types'
 
 module AppEngine
   
-# The +Datastore+ provides access to a schema-less data
+# The Datastore provides access to a schema-less data
 # storage system.  The fundamental unit of data in this system is the
-# +Entity+, which has an immutable identity (represented by a
-# +Key+) and zero of more mutable properties.  +Entity+
+# Datastore::Entity, which has an immutable identity (represented by a
+# Datastore::Key) and zero of more mutable properties.  Entity
 # objects can be created, updated, deleted, retrieved by identifier,
-# and queried via a combination of properties.
+# and queried via a combination of properties using Datastore::Query.
 #
 # The +Datastore+ can be used transactionally and supports the
 # notion of a "current" transaction.  A current transaction is established by
@@ -47,6 +47,21 @@ module AppEngine
 # Users of this class have the choice of explicitly passing a (potentially
 # null) +Transaction+ to these methods or relying on the current transaction.
 #
+# Supported property types:
+# - String (max 500 chars)
+# - Integer ((-2**63)..(2**63 - 1))
+# - Float
+# - Time
+# - TrueClass
+# - FalseClass
+# - NilClass
+# - Datastore::Key
+# - Datastore::Link
+# - Datastore::Text
+# - Datastore::Blob
+# - Datastore::ByteString
+# - com.google.appengine.api.users.User
+
 module Datastore
   module_function
   
@@ -254,11 +269,14 @@ module Datastore
     FetchOptions = JavaDatastore::FetchOptions
     
     module Constants
-      [JQuery::FilterOperator, JQuery::SortDirection].each do |enum|
-        enum.constants.each do |name|
-          const_set(name, enum.const_get(name))
-        end
-      end
+      EQUAL = JQuery::FilterOperator::EQUAL
+      GREATER_THAN = JQuery::FilterOperator::GREATER_THAN
+      GREATER_THAN_OR_EQUAL = JQuery::FilterOperator::GREATER_THAN_OR_EQUAL
+      LESS_THAN = JQuery::FilterOperator::LESS_THAN
+      LESS_THAN_OR_EQUAL = JQuery::FilterOperator::LESS_THAN_OR_EQUAL
+      
+      ASCENDING = JQuery::SortDirection::ASCENDING
+      DESCENDING = JQuery::SortDirection::DESCENDING
     end
     include Constants
     
