@@ -7,9 +7,14 @@
 APIs and utilities for using JRuby on Google App Engine.
 
 See these classes for an overview of each API:
-- AppEngine::Datastore
 - AppEngine::Logger
 - AppEngine::Testing
+- AppEngine::Users
+- AppEngine::URLFetch
+- AppEngine::Datastore
+
+Unless you're implementing your own ORM, you probably want to use the
+DataMapper API instead of the lower level AppEngine::Datastore API.
 
 == REQUIREMENTS:
 

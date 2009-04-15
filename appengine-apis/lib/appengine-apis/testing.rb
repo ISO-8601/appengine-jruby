@@ -37,7 +37,7 @@ module AppEngine
     class TestEnv  # :nodoc:
       include AppEngine::ApiProxy::Environment
       
-      attr_writer :appid, :version, :email, :admin, :logged_in
+      attr_writer :appid, :version, :email, :admin
       attr_writer :auth_domain, :request_namespace, :default_namespace
       
       def initialize
@@ -59,11 +59,11 @@ module AppEngine
       end
       
       def isLoggedIn
-        @logged_in
+        !(@email.nil? || @auth_domain.nil?)
       end
       
       def isAdmin
-        @admin
+        !!@admin
       end
       
       def getAuthDomain
