@@ -198,27 +198,29 @@ module AppEngine
   end
 end
 
-class Net::HTTPResponse  # :nodoc:
-  alias stream_check_without_urlfetch stream_check
+module Net  # :nodoc:
+  class HTTPResponse  # :nodoc:
+    alias stream_check_without_urlfetch stream_check
   
-  def stream_check
-    return if @urlfetch_body
-    stream_check_without_urlfetch
-  end
-  
-  alias read_body_0_without_urlfetch read_body_0
-
-  def read_body_0(dest)
-    if @urlfetch_body
-      dest << @urlfetch_body
-      return
-    else
-      read_body_0_without_urlfetch(dest)
+    def stream_check
+      return if @urlfetch_body
+      stream_check_without_urlfetch
     end
-  end
   
-  def urlfetch_body=(body)
-    @body_exist = body && self.class.body_permitted?
-    @urlfetch_body = body || ''
+    alias read_body_0_without_urlfetch read_body_0
+
+    def read_body_0(dest)
+      if @urlfetch_body
+        dest << @urlfetch_body
+        return
+      else
+        read_body_0_without_urlfetch(dest)
+      end
+    end
+  
+    def urlfetch_body=(body)
+      @body_exist = body && self.class.body_permitted?
+      @urlfetch_body = body || ''
+    end
   end
 end

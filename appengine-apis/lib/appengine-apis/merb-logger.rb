@@ -20,7 +20,7 @@
 
 require 'merb-core/logger'
 
-module Merb
+module Merb  # :nodoc:
   
   # Modifies the Merb Logger class to save logs using the Logging API
   # instead of writing directly to a stream.
