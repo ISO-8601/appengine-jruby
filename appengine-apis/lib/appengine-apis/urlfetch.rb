@@ -25,6 +25,11 @@ module AppEngine
   #
   # Chunked and hanging requests are not supported, and all content will be
   # returned in a single block.
+  #
+  # URLFetch::HTTP also provides a drop-in replacement for Net::HTTP.
+  # To replace the standard implementation throughout your app you can do:
+  #   require 'appengine-apis/urlfetch'
+  #   Net::HTTP = AppEngine::URLFetch::HTTP
   module URLFetch
     import com.google.appengine.api.urlfetch.FetchOptions
     import com.google.appengine.api.urlfetch.HTTPHeader
@@ -44,12 +49,12 @@ module AppEngine
     
     module_function
     
-    #Fetches the given HTTP URL, blocking until the result is returned.
+    # Fetches the given HTTP URL, blocking until the result is returned.
     # 
     # Supported options:
     # [:method] GET, POST, HEAD, PUT, or DELETE
     # [:payload] POST or PUT payload (implies method is not GET, HEAD,
-    #           or DELETE)
+    #            or DELETE)
     # [:headers]
     #    HTTP headers to send with the request. May be a Hash or
     #    Net::HTTPHeaders.

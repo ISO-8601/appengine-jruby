@@ -125,7 +125,7 @@ module AppEngine
     # across all apps, and includes all information necessary to fetch
     # the entity from the datastore with #Datastore.get(Key).
     #
-    # See http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/api/datastore/Key.html
+    # See also http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/api/datastore/Key.html
     #
     class Key
       
@@ -227,7 +227,7 @@ module AppEngine
     # as an arbitrary string), and a set of zero or more typed
     # properties.
     #
-    # See http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/api/datastore/Entity.html
+    # See also http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/api/datastore/Entity.html
     #
     class Entity
       include Enumerable

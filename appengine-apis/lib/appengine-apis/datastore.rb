@@ -24,7 +24,6 @@
 #
 # The datastore errors are defined in datastore_types.rb.
 
-require 'appengine-apis/apiproxy'
 require 'appengine-apis/datastore_types'
 
 module AppEngine
@@ -60,7 +59,7 @@ module AppEngine
 # - Datastore::Text
 # - Datastore::Blob
 # - Datastore::ByteString
-# - com.google.appengine.api.users.User
+# - Users::User
 
 module Datastore
   module_function
@@ -145,15 +144,15 @@ module Datastore
   # current transaction and will be returned by subsequent, same-thread
   # calls to #current_transaction until one of the following happens:
   #
-  #  1. #begin_transaction is invoked from the same thread. In this case
-  #     #current_transaction will return the result of the more recent
-  #     call to #begin_transaction.
-  #  2. #Transaction.commit is invoked on the Transaction returned by
-  #     this method.  Whether or not the commit succeeds, the
-  #     Transaction will no longer be current.
-  #  3. #Transaction.rollback is invoked on the Transaction returned by
-  #     this method.  Whether or not the rollback succeeds, the
-  #     Transaction will no longer be current.
+  # 1. begin_transaction is invoked from the same thread. In this case
+  #    current_transaction will return the result of the more recent
+  #    call to begin_transaction.
+  # 2. Transaction.commit is invoked on the Transaction returned by
+  #    this method.  Whether or not the commit succeeds, the
+  #    Transaction will no longer be current.
+  # 3. Transaction.rollback is invoked on the Transaction returned by
+  #    this method.  Whether or not the rollback succeeds, the
+  #    Transaction will no longer be current.
   #
   def begin_transaction
     convert_exceptions do
