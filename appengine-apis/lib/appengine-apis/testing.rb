@@ -80,7 +80,11 @@ module AppEngine
       
       def setDefaultNamespace(s)
         @default_namespace = s
-      end      
+      end
+      
+      def inspect
+        "#<TestEnv>"
+      end
     end
     
     class << self
