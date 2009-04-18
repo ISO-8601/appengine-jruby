@@ -1,75 +1,39 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>File: README.rdoc</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-  <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
-  <script type="text/javascript">
-  // <![CDATA[
-
-  function popupCode( url ) {
-    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
-  }
-
-  function toggleCode( id ) {
-    if ( document.getElementById )
-      elem = document.getElementById( id );
-    else if ( document.all )
-      elem = eval( "document.all." + id );
-    else
-      return false;
-
-    elemStyle = elem.style;
-    
-    if ( elemStyle.display != "block" ) {
-      elemStyle.display = "block"
-    } else {
-      elemStyle.display = "none"
-    }
-
-    return true;
-  }
-  
-  // Make codeblocks hidden by default
-  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
-  
-  // ]]>
-  </script>
-
+    <title>README.rdoc</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
 </head>
-<body>
 
+<body>     
+    <table border='0' cellpadding='0' cellspacing='0' width="100%" class='banner'>
+      <tr><td>
+        <table width="100%" border='0' cellpadding='0' cellspacing='0'><tr>
+          <td class="file-title" colspan="2"><span class="file-title-prefix">File</span><br />README.rdoc</td>
+          <td align="right">
+            <table border='0' cellspacing="0" cellpadding="2">
+              <tr>
+                <td>Path:</td>
+                <td>README.rdoc</td>
+              </tr>
+              <tr>
+                <td>Modified:</td>
+                <td>Sat Apr 18 15:58:16 -0700 2009</td>
+              </tr>
+            </table>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table><br />
 
-
-  <div id="fileHeader">
-    <h1>README.rdoc</h1>
-    <table class="header-table">
-    <tr class="top-aligned-row">
-      <td><strong>Path:</strong></td>
-      <td>README.rdoc
-      </td>
-    </tr>
-    <tr class="top-aligned-row">
-      <td><strong>Last Update:</strong></td>
-      <td>Wed Apr 15 14:18:12 -0700 2009</td>
-    </tr>
-    </table>
-  </div>
-  <!-- banner header -->
-
-  <div id="bodyContent">
-
-
-
-  <div id="contextContent">
-
-    <div id="description">
-      <h1>appengine-apis</h1>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description"><h1>appengine-apis</h1>
 <ul>
 <li><a
 href="http://code.google.com/p/appengine-jruby">code.google.com/p/appengine-jruby</a>
@@ -93,6 +57,9 @@ See these classes for an overview of each API:
 <li><a href="../classes/AppEngine/Users.html">AppEngine::Users</a>
 
 </li>
+<li><a href="../classes/AppEngine/Mail.html">AppEngine::Mail</a>
+
+</li>
 <li><a href="../classes/AppEngine/URLFetch.html">AppEngine::URLFetch</a>
 
 </li>
@@ -101,7 +68,7 @@ See these classes for an overview of each API:
 </li>
 </ul>
 <p>
-Unless you&#8216;re implementing your own ORM, you probably want to use the
+Unless you&#8217;re implementing your own ORM, you probably want to use the
 DataMapper API instead of the lower level <a
 href="../classes/AppEngine/Datastore.html">AppEngine::Datastore</a> API.
 </p>
@@ -117,50 +84,44 @@ href="http://code.google.com/appengine">code.google.com/appengine</a>)
 Copyright 2009 Google Inc
 </p>
 <p>
-Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+Licensed under the Apache License, Version 2.0 (the &#8220;License&#8221;);
 you may not use this file except in compliance with the License. You may
 obtain a copy of the License at
 </p>
-<pre>
-    http://www.apache.org/licenses/LICENSE-2.0
-</pre>
+<p>
+<a
+href="http://www.apache.org/licenses/LICENSE-2.0">www.apache.org/licenses/LICENSE-2.0</a>
+</p>
 <p>
 Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+distributed under the License is distributed on an &#8220;AS IS&#8221;
+BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing permissions
+and limitations under the License.
 </p>
-
-    </div>
-
-
-   </div>
-
-
-  </div>
-
-
-    <!-- if includes -->
-
-    <div id="section">
-
-
-
-
-
-      
-
-
-    <!-- if method_list -->
-
-
-  </div>
-
-
-<div id="validator-badges">
-  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
 </div>
+    
 
-</body>
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
 </html>

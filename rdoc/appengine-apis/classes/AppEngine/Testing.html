@@ -1,241 +1,237 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Module: AppEngine::Testing</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-  <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
-  <script type="text/javascript">
-  // <![CDATA[
-
-  function popupCode( url ) {
-    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
-  }
-
-  function toggleCode( id ) {
-    if ( document.getElementById )
-      elem = document.getElementById( id );
-    else if ( document.all )
-      elem = eval( "document.all." + id );
-    else
-      return false;
-
-    elemStyle = elem.style;
-    
-    if ( elemStyle.display != "block" ) {
-      elemStyle.display = "block"
-    } else {
-      elemStyle.display = "none"
-    }
-
-    return true;
-  }
-  
-  // Make codeblocks hidden by default
-  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
-  
-  // ]]>
-  </script>
-
+    <title>AppEngine::Testing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
 </head>
-<body>
 
-
-
-    <div id="classHeader">
-        <table class="header-table">
-        <tr class="top-aligned-row">
-          <td><strong>Module</strong></td>
-          <td class="class-name-in-header">AppEngine::Testing</td>
-        </tr>
-        <tr class="top-aligned-row">
-            <td><strong>In:</strong></td>
-            <td>
-                <a href="../../files/lib/appengine-apis/testing_rb.html">
-                lib/appengine-apis/testing.rb
-                </a>
-        <br />
+<body>     
+    <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'>
+        <tr>
+            <td class="file-title"><span class="file-title-prefix">Module</span><br />AppEngine::Testing</td>
+            <td align="right">
+                <table cellspacing="0" cellpadding="2">
+                    <tr valign="top">
+                        <td>In:</td>
+                        <td>
+                            
+                            <a href="../../files/lib/appengine-apis/testing_rb.html">lib/appengine-apis/testing.rb</a>
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
             </td>
         </tr>
-
-        </table>
-    </div>
-  <!-- banner header -->
-
-  <div id="bodyContent">
-
-
-
-  <div id="contextContent">
-
-    <div id="description">
-      <p>
+    </table>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description"><p>
 Local testing support for Google App Engine
 </p>
 <p>
-If you run your code on Google&#8216;s servers or under dev_appserver, the
-api&#8216;s are already configured.
+If you run your code on Google&#8217;s servers or under dev_appserver, the
+api&#8217;s are already configured.
 </p>
 <p>
 To run outside this environment, you need to install a test environment and
 api stubs.
 </p>
+</div>
+    
 
-    </div>
+    
 
+    
+    
 
-   </div>
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <ul>
+        
+        <li><a href="#M000041">app_dir</a></li>
+        
+        <li><a href="#M000044">app_dir=</a></li>
+        
+        <li><a href="#M000052">install_api_stubs</a></li>
+        
+        <li><a href="#M000047">install_test_datastore</a></li>
+        
+        <li><a href="#M000039">install_test_env</a></li>
+        
+    </ul>
+    
 
-    <div id="method-list">
-      <h3 class="section-bar">Methods</h3>
+    
 
-      <div class="name-list">
-      <a href="#M000049">app_dir</a>&nbsp;&nbsp;
-      <a href="#M000050">app_dir=</a>&nbsp;&nbsp;
-      <a href="#M000052">install_api_stubs</a>&nbsp;&nbsp;
-      <a href="#M000051">install_test_datastore</a>&nbsp;&nbsp;
-      <a href="#M000048">install_test_env</a>&nbsp;&nbsp;
-      </div>
-    </div>
+    
 
-  </div>
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Testing/TestEnv.html">AppEngine::Testing::TestEnv</a></li>
+        
+    </ul>
+    
 
+    
 
-    <!-- if includes -->
+    
 
-    <div id="section">
-
-
-
-
-
-      
-
-
-    <!-- if method_list -->
-    <div id="methods">
-      <h3 class="section-bar">Public Class methods</h3>
-
-      <div id="method-M000049" class="method-detail">
-        <a name="M000049"></a>
-
-        <div class="method-heading">
-          <a href="#M000049" class="method-signature">
-          <span class="method-name">app_dir</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000041"></a><b>app_dir</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
 The application directory, or &#8217;.&#8217; if not set. Composite index
-definitions are written to &quot;#{<a
-href="Testing.html#M000049">app_dir</a>}/WEB-INF/&quot;.
+definitions are written to &#8220;#{<a
+href="Testing.html#M000041">app_dir</a>}/WEB-INF/&#8221;.
 </p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000049-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 107</span>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000041_source')" id="l_M000041_source">show</a>
+                        
+                    </p>
+                    <div id="M000041_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 111</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">app_dir</span>
         <span class="ruby-identifier">file</span> = <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">getApplicationDirectory</span>
         <span class="ruby-identifier">file</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span>
-      <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000050" class="method-detail">
-        <a name="M000050"></a>
-
-        <div class="method-heading">
-          <a href="#M000050" class="method-signature">
-          <span class="method-name">app_dir=</span><span class="method-args">(dir)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000044"></a><b>app_dir=</b>(dir)
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
 Sets the application directory. Should be called before creating stubs.
 </p>
 <p>
-Composite index definitions are written to &quot;#{<a
-href="Testing.html#M000049">app_dir</a>}/WEB-INF/&quot;.
+Composite index definitions are written to &#8220;#{<a
+href="Testing.html#M000041">app_dir</a>}/WEB-INF/&#8221;.
 </p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000050-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 116</span>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000044_source')" id="l_M000044_source">show</a>
+                        
+                    </p>
+                    <div id="M000044_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 120</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">app_dir=</span>(<span class="ruby-identifier">dir</span>)
         <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">setApplicationDirectory</span>(<span class="ruby-identifier">java</span>.<span class="ruby-identifier">io</span>.<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dir</span>))
-      <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000052" class="method-detail">
-        <a name="M000052"></a>
-
-        <div class="method-heading">
-          <a href="#M000052" class="method-signature">
-          <span class="method-name">install_api_stubs</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000052"></a><b>install_api_stubs</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
 Install stub apis. The datastore will be written to the disk inside <a
-href="Testing.html#M000049">app_dir</a>.
+href="Testing.html#M000041">app_dir</a>.
 </p>
 <p>
 You could potentially use this to run under a ruby web server instead of
 dev_appserver. In that case you will need to install and configure a test
 environment for each request.
 </p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000052-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 145</span>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000052_source')" id="l_M000052_source">show</a>
+                        
+                    </p>
+                    <div id="M000052_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 149</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_api_stubs</span>
         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">app_dir</span> = <span class="ruby-value str">'.'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">app_dir</span>.<span class="ruby-identifier">nil?</span>
         <span class="ruby-identifier">delegate</span> = <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">create</span>
         <span class="ruby-constant">ApiProxy</span><span class="ruby-operator">::</span><span class="ruby-identifier">setDelegate</span>(<span class="ruby-identifier">delegate</span>)
         <span class="ruby-identifier">delegate</span>
-      <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000051" class="method-detail">
-        <a name="M000051"></a>
-
-        <div class="method-heading">
-          <a href="#M000051" class="method-signature">
-          <span class="method-name">install_test_datastore</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000047"></a><b>install_test_datastore</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
 Install stub apis and force all datastore operations to use an in-memory
 datastore.
 </p>
 <p>
 You may call this multiple times to reset to a new in-memory datastore.
 </p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000051-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 124</span>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000047_source')" id="l_M000047_source">show</a>
+                        
+                    </p>
+                    <div id="M000047_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 128</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_test_datastore</span>
         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">app_dir</span> = <span class="ruby-value str">'.'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">app_dir</span>.<span class="ruby-identifier">nil?</span>
         <span class="ruby-identifier">delegate</span> = <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">create</span>
@@ -249,57 +245,55 @@ You may call this multiple times to reset to a new in-memory datastore.
             <span class="ruby-identifier">java</span>.<span class="ruby-identifier">lang</span>.<span class="ruby-constant">Integer</span><span class="ruby-operator">::</span><span class="ruby-constant">MAX_VALUE</span>.<span class="ruby-identifier">to_s</span>)
         <span class="ruby-constant">ApiProxy</span><span class="ruby-operator">::</span><span class="ruby-identifier">setDelegate</span>(<span class="ruby-identifier">delegate</span>)
         <span class="ruby-identifier">delegate</span>
-      <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000048" class="method-detail">
-        <a name="M000048"></a>
-
-        <div class="method-heading">
-          <a href="#M000048" class="method-signature">
-          <span class="method-name">install_test_env</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000039"></a><b>install_test_env</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
 Install a test environment for the current thread.
 </p>
 <p>
 You must call this before making any api calls.
 </p>
 <p>
-Note that Google&#8216;s production and local environments are single
+Note that Google&#8217;s production and local environments are single
 threaded. You may run into problems if you use multiple threads.
 </p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000048-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 95</span>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000039_source')" id="l_M000039_source">show</a>
+                        
+                    </p>
+                    <div id="M000039_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/testing.rb, line 99</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_test_env</span>
         <span class="ruby-identifier">env</span> = <span class="ruby-constant">TestEnv</span>.<span class="ruby-identifier">new</span>
         <span class="ruby-constant">ApiProxy</span><span class="ruby-operator">::</span><span class="ruby-identifier">setEnvironmentForCurrentThread</span>(<span class="ruby-identifier">env</span>)
         <span class="ruby-identifier">env</span>
-      <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-
-
-  </div>
-
-
-<div id="validator-badges">
-  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
 </div>
-
-</body>
-</html>
+    </div>
+  </body>
+</html>    
