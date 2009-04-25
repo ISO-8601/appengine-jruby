@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>AppEngine::SDK</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'>
+        <tr>
+            <td class="file-title"><span class="file-title-prefix">Module</span><br />AppEngine::SDK</td>
+            <td align="right">
+                <table cellspacing="0" cellpadding="2">
+                    <tr valign="top">
+                        <td>In:</td>
+                        <td>
+                            
+                            <a href="../../files/lib/appengine-apis/sdk_rb.html">lib/appengine-apis/sdk.rb</a>
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description"><p>
+Helper methods to locate the App Engine <a href="SDK.html">SDK</a> and add
+it to the class path.
+</p>
+</div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <ul>
+        
+        <li><a href="#M000046">load_apiproxy</a></li>
+        
+        <li><a href="#M000050">load_local_apiproxy_factory</a></li>
+        
+        <li><a href="#M000061">sdk_path</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000046"></a><b>load_apiproxy</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
+Tries to load the ApiProxy class.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000046_source')" id="l_M000046_source">show</a>
+                        
+                    </p>
+                    <div id="M000046_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/sdk.rb, line 28</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_apiproxy</span>
+        <span class="ruby-identifier">with_jars</span>(<span class="ruby-node">%w{lib impl appengine-api.jar}</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Java</span>.<span class="ruby-constant">ComGoogleApphostingApi</span>.<span class="ruby-constant">ApiProxy</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000050"></a><b>load_local_apiproxy_factory</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
+Tries to load the ApiProxyLocalFactory class.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000050_source')" id="l_M000050_source">show</a>
+                        
+                    </p>
+                    <div id="M000050_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/sdk.rb, line 35</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_local_apiproxy_factory</span>
+        <span class="ruby-identifier">with_jars</span>(<span class="ruby-node">%w{lib shared appengine-local-runtime-shared.jar}</span>,
+                  <span class="ruby-node">%w{lib impl appengine-api-stubs.jar}</span>,
+                  <span class="ruby-node">%w{lib impl appengine-local-runtime.jar}</span>
+                  ) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Java</span>.<span class="ruby-constant">ComGoogleAppengineToolsDevelopment</span>.<span class="ruby-constant">ApiProxyLocalFactory</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000061"></a><b>sdk_path</b>(*pieces)
+                    
+                </div>
+                
+                <div class="description">
+                  
+                  <p>
+Tries to find the Google App Engine <a href="SDK.html">SDK</a> for Java.
+</p>
+<p>
+Looks for appcfg.sh in these directories (in order):
+</p>
+<ul>
+<li>ENV[&#8216;APPENGINE_JAVA_SDK&#8217;]/bin
+
+</li>
+<li>each directory in ENV[&#8216;PATH&#8217;]
+
+</li>
+<li>&#8216;/usr/local/appengine-java-sdk/bin&#8216;
+
+</li>
+<li>&#8216;c:appengine-java-sdkbin&#8217;
+
+</li>
+</ul>
+<p>
+Returns File.join(sdk_directory, *pieces)
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000061_source')" id="l_M000061_source">show</a>
+                        
+                    </p>
+                    <div id="M000061_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/sdk.rb, line 71</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sdk_path</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">pieces</span>)
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@sdk_path</span>
+          <span class="ruby-identifier">base_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">ENV</span>[<span class="ruby-value str">'APPENGINE_JAVA_SDK'</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">''</span>, <span class="ruby-value str">'bin'</span>)
+          <span class="ruby-identifier">exec_paths</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'PATH'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>)
+          <span class="ruby-identifier">exec_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'/usr/local/appengine-java-sdk/bin'</span>
+          <span class="ruby-identifier">exec_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'c:\appengine-java-sdk\bin'</span>
+          <span class="ruby-comment cmt"># TODO also check for reggae</span>
+          
+          <span class="ruby-keyword kw">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">exec_paths</span>.<span class="ruby-identifier">empty?</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base_path</span>, <span class="ruby-value str">'appcfg.sh'</span>))
+              <span class="ruby-ivar">@sdk_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">base_path</span>)
+              <span class="ruby-keyword kw">return</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-ivar">@sdk_path</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">pieces</span>)
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">base_path</span> = <span class="ruby-identifier">exec_paths</span>.<span class="ruby-identifier">shift</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Unable to locate the Google App Engine SDK for Java.&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-ivar">@sdk_path</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">pieces</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    
