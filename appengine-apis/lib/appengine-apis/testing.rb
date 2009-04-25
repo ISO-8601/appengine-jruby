@@ -1,6 +1,6 @@
 #!/usr/bin/ruby1.8 -w
 #
-# Copyright:: Copyright 2007 Google Inc.
+# Copyright:: Copyright 2009 Google Inc.
 # Original Author:: Ryan Brown (mailto:ribrdb@google.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,8 +31,6 @@ module AppEngine
   # To run outside this environment, you need to install a test environment and
   # api stubs.
   module Testing
-    import com.google.appengine.tools.development.ApiProxyLocalFactory
-    import com.google.appengine.api.datastore.dev.LocalDatastoreService
 
     class TestEnv  # :nodoc:
       include AppEngine::ApiProxy::Environment
@@ -105,7 +103,7 @@ module AppEngine
       end
       
       def factory  # :nodoc:
-        @factory ||= ApiProxyLocalFactory.new
+        @factory ||= AppEngine::SDK.load_local_apiproxy_factory.new
       end
       
       # The application directory, or '.' if not set.
@@ -130,13 +128,15 @@ module AppEngine
       def install_test_datastore
         self.app_dir = '.' if app_dir.nil?
         delegate = factory.create
+        lds = Java.ComGoogleAppengineApiDatastoreDev.LocalDatastoreService
+        
         delegate.set_property(
-            LocalDatastoreService::NO_STORAGE_PROPERTY, "true")
+            lds::NO_STORAGE_PROPERTY, "true")
         delegate.set_property(
-            LocalDatastoreService::MAX_QUERY_LIFETIME_PROPERTY,
+            lds::MAX_QUERY_LIFETIME_PROPERTY,
             java.lang.Integer::MAX_VALUE.to_s)
         delegate.set_property(
-            LocalDatastoreService::MAX_TRANSACTION_LIFETIME_PROPERTY,
+            lds::MAX_TRANSACTION_LIFETIME_PROPERTY,
             java.lang.Integer::MAX_VALUE.to_s)
         ApiProxy::setDelegate(delegate)
         delegate
@@ -153,6 +153,45 @@ module AppEngine
         delegate = factory.create
         ApiProxy::setDelegate(delegate)
         delegate
+      end
+      
+      # Loads stub API implementations if no API implementation is
+      # currently configured.
+      #
+      # Sets up a datastore saved to disk in +app_dir+. +app_dir+ defaults
+      # to ENV['APPLICATION_ROOT'] or '.' if not specified.
+      #
+      # Does nothing is APIs are already configured (e.g. in production).
+      #
+      # As a shortcut you can use
+      #   require 'appengine-apis/local_boot'
+      # 
+      def boot(app_dir=nil)
+        app_dir ||= ENV['APPLICATION_ROOT'] || '.'
+        unless AppEngine::ApiProxy.current_environment
+          env = install_test_env
+          appid = get_app_id(app_dir)
+          env.appid = appid if appid
+        end
+        unless AppEngine::ApiProxy.delegate
+          self.app_dir = app_dir
+          install_api_stubs
+        end
+      end
+      
+      # Looks for app.yaml or WEB-INF/appengine-web.xml in +app_dir+
+      # and parses the application id.
+      def get_app_id(app_dir)
+        aeweb_path = File.join(app_dir, 'WEB-INF', 'appengine-web.xml')
+        app_yaml_path = File.join(app_dir, 'app.yaml')
+        if File.exist(app_yaml_path)
+          app_yaml = YAML.load(File.open(app_yaml_path))
+          return app_yaml['application']
+        elsif File.exist(aeweb_path)
+          require 'rexml/document'
+          aeweb = REXML::Document.new(File.new(aeweb_path))
+          return aeweb['appengine-web-app/application'].text
+        end
       end
       
     end

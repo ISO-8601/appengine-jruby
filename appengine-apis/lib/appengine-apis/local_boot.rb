@@ -16,32 +16,7 @@
 # limitations under the License.
 #
 #
-# Ruby interface to the Java ApiProxy.
+# Helpers for installing stub apis in unit tests.
 
-require 'appengine-apis/sdk'
-
-module AppEngine
-  
-  ApiProxy = AppEngine::SDK.load_apiproxy
-  
-  class << ApiProxy
-    def get_app_id
-      get_current_environment.getAppId
-    end
-  
-    def get_auth_domain
-      get_current_environment.getAuthDomain
-    end
-    
-    alias :add_log_record :log
-    
-    def log(level, message)
-      message = (message || "").to_s.chomp
-      return if message.nil? || message.empty?
-      record = AppEngine::ApiProxy::LogRecord.new(
-          level, java.lang.System.currentTimeMillis() * 1000, message.to_s)
-      add_log_record(record)
-    end
-  end
-end
-
+require 'appengine-apis/testing'
+AppEngine::Testing.boot
