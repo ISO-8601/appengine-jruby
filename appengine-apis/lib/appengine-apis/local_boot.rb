@@ -20,3 +20,10 @@
 
 require 'appengine-apis/testing'
 AppEngine::Testing.boot
+
+require 'appengine-apis/datastore'
+require 'appengine-apis/logger'
+require 'appengine-apis/mail'
+require 'appengine-apis/memcache'
+require 'appengine-apis/urlfetch'
+require 'appengine-apis/users'

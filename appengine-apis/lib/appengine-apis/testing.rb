@@ -184,13 +184,13 @@ module AppEngine
       def get_app_id(app_dir)
         aeweb_path = File.join(app_dir, 'WEB-INF', 'appengine-web.xml')
         app_yaml_path = File.join(app_dir, 'app.yaml')
-        if File.exist(app_yaml_path)
+        if File.exist?(app_yaml_path)
           app_yaml = YAML.load(File.open(app_yaml_path))
           return app_yaml['application']
-        elsif File.exist(aeweb_path)
+        elsif File.exist?(aeweb_path)
           require 'rexml/document'
           aeweb = REXML::Document.new(File.new(aeweb_path))
-          return aeweb['appengine-web-app/application'].text
+          return aeweb.root.elements['application'].text
         end
       end
       

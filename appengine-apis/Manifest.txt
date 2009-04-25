@@ -16,7 +16,6 @@ lib/appengine-apis/sdk.rb
 lib/appengine-apis/testing.rb
 lib/appengine-apis/urlfetch.rb
 lib/appengine-apis/users.rb
-lib/appengine-apis/java/com/ribrdb/appengine/memcache/MarshaledObject.class
 script/console
 script/destroy
 script/generate

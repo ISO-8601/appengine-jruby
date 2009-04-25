@@ -69,7 +69,6 @@ module AppEngine
       # Returns File.join(sdk_directory, *pieces)
       #
       def sdk_path(*pieces)
-        puts "sdk_path(#{pieces.join('/')})"
         unless @sdk_path
           base_path = File.join(ENV['APPENGINE_JAVA_SDK'] || '', 'bin')
           exec_paths = ENV['PATH'].split(File::PATH_SEPARATOR)

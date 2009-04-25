@@ -6,11 +6,20 @@
 
 APIs and utilities for using JRuby on Google App Engine.
 
+To load the API stubs in IRB simply
+  require 'rubygems'
+  require 'appengine-apis/local_boot'
+
+This will configure access to the same Datastore as running
+
+  $ dev_appserver.sh .
+
 See these classes for an overview of each API:
 - AppEngine::Logger
 - AppEngine::Testing
 - AppEngine::Users
 - AppEngine::Mail
+- AppEngine::Memcache
 - AppEngine::URLFetch
 - AppEngine::Datastore
 
