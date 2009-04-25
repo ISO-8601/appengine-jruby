@@ -47,10 +47,10 @@ properties using <a href="Datastore/Query.html">Datastore::Query</a>.
 The <tt>Datastore</tt> can be used transactionally and supports the notion
 of a &#8220;current&#8221; transaction. A current transaction is
 established by calling <a
-href="Datastore.html#M000019">begin_transaction</a>. The transaction
+href="Datastore.html#M000017">begin_transaction</a>. The transaction
 returned by this method ceases to be current when an attempt is made to
 commit or rollback or when another call is made to <a
-href="Datastore.html#M000019">begin_transaction</a>. A transaction can only
+href="Datastore.html#M000017">begin_transaction</a>. A transaction can only
 be current within the <tt>Thread</tt> that created it.
 </p>
 <p>
@@ -116,19 +116,19 @@ Supported property types:
     <div class="sectiontitle">Methods</div>
     <ul>
         
-        <li><a href="#M000022">active_transactions</a></li>
+        <li><a href="#M000021">active_transactions</a></li>
         
-        <li><a href="#M000019">begin_transaction</a></li>
+        <li><a href="#M000017">begin_transaction</a></li>
         
-        <li><a href="#M000021">current_transaction</a></li>
+        <li><a href="#M000018">current_transaction</a></li>
         
-        <li><a href="#M000012">delete</a></li>
+        <li><a href="#M000009">delete</a></li>
         
-        <li><a href="#M000006">get</a></li>
+        <li><a href="#M000002">get</a></li>
         
-        <li><a href="#M000010">put</a></li>
+        <li><a href="#M000007">put</a></li>
         
-        <li><a href="#M000029">transaction</a></li>
+        <li><a href="#M000024">transaction</a></li>
         
     </ul>
     
@@ -221,7 +221,7 @@ Supported property types:
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000022"></a><b>active_transactions</b>()
+                    <a name="M000021"></a><b>active_transactions</b>()
                     
                 </div>
                 
@@ -239,10 +239,10 @@ commit or rollback has been made.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000022_source')" id="l_M000022_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000021_source')" id="l_M000021_source">show</a>
                         
                     </p>
-                    <div id="M000022_source" class="dyn-source">
+                    <div id="M000021_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 183</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active_transactions</span>
     <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -257,7 +257,7 @@ commit or rollback has been made.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000019"></a><b>begin_transaction</b>()
+                    <a name="M000017"></a><b>begin_transaction</b>()
                     
                 </div>
                 
@@ -271,13 +271,13 @@ longer need the Transaction.
 <p>
 The Transaction returned by this call will be considered the current
 transaction and will be returned by subsequent, same-thread calls to <a
-href="Datastore.html#M000021">current_transaction</a> until one of the
+href="Datastore.html#M000018">current_transaction</a> until one of the
 following happens:
 </p>
 <ol>
-<li><a href="Datastore.html#M000019">begin_transaction</a> is invoked from the
+<li><a href="Datastore.html#M000017">begin_transaction</a> is invoked from the
 same thread. In this case <a
-href="Datastore.html#M000021">current_transaction</a> will return the
+href="Datastore.html#M000018">current_transaction</a> will return the
 result of the more recent call to begin_transaction.
 
 </li>
@@ -300,10 +300,10 @@ current.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000019_source')" id="l_M000019_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000017_source')" id="l_M000017_source">show</a>
                         
                     </p>
-                    <div id="M000019_source" class="dyn-source">
+                    <div id="M000017_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 157</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">begin_transaction</span>
     <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -318,7 +318,7 @@ current.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000021"></a><b>Datastore.current_transaction &rarr; transaction || IndexError
+                    <a name="M000018"></a><b>Datastore.current_transaction &rarr; transaction || IndexError
 Datastore.current_transaction(default) &rarr; transaction
 </b>
                     
@@ -329,7 +329,7 @@ Datastore.current_transaction(default) &rarr; transaction
                   <p>
 Returns the current transaction for this thread. The current transaction is
 defined as the result of the most recent, same-thread invocation of <a
-href="Datastore.html#M000019">begin_transaction</a> that has not been
+href="Datastore.html#M000017">begin_transaction</a> that has not been
 committed or rolled back.
 </p>
 <p>
@@ -344,10 +344,10 @@ specified.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000021_source')" id="l_M000021_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000018_source')" id="l_M000018_source">show</a>
                         
                     </p>
-                    <div id="M000021_source" class="dyn-source">
+                    <div id="M000018_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 174</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_transaction</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -362,7 +362,7 @@ specified.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000012"></a><b>Datastore.delete(transaction=current_transaction, key)
+                    <a name="M000009"></a><b>Datastore.delete(transaction=current_transaction, key)
 Datastore.delete(transaction=current_transaction, [keys])
 </b>
                     
@@ -385,10 +385,10 @@ transaction instead of the current transaction.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000009_source')" id="l_M000009_source">show</a>
                         
                     </p>
-                    <div id="M000012_source" class="dyn-source">
+                    <div id="M000009_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 132</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -404,7 +404,7 @@ transaction instead of the current transaction.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000006"></a><b>Datastore.get(transaction=current_transaction, key) &rarr; Entity
+                    <a name="M000002"></a><b>Datastore.get(transaction=current_transaction, key) &rarr; Entity
 Datastore.get(transaction=current_transaction, [keys]) &rarr; Entities
 </b>
                     
@@ -444,10 +444,10 @@ transaction.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000006_source')" id="l_M000006_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
                         
                     </p>
-                    <div id="M000006_source" class="dyn-source">
+                    <div id="M000002_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 87</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -470,7 +470,7 @@ transaction.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000010"></a><b>Datastore.put(transaction=current_transaction, entity) &rarr; Key
+                    <a name="M000007"></a><b>Datastore.put(transaction=current_transaction, entity) &rarr; Key
 Datastore.put(transaction=current_transaction, entities) &rarr; Keys
 </b>
                     
@@ -483,7 +483,7 @@ Store one or more entities in the datastore.
 </p>
 <p>
 The entities may be new or previously existing. For new entities, <a
-href="Datastore.html#M000010">put</a> will fill in the app id and key
+href="Datastore.html#M000007">put</a> will fill in the app id and key
 assigned by the datastore.
 </p>
 <p>
@@ -504,10 +504,10 @@ transaction instead of the current transaction.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000010_source')" id="l_M000010_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000007_source')" id="l_M000007_source">show</a>
                         
                     </p>
-                    <div id="M000010_source" class="dyn-source">
+                    <div id="M000007_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 116</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">put</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">convert_exceptions</span> <span class="ruby-keyword kw">do</span>
@@ -523,7 +523,7 @@ transaction instead of the current transaction.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000029"></a><b>transaction</b>(retries=0)
+                    <a name="M000024"></a><b>transaction</b>(retries=0)
                     
                 </div>
                 
@@ -531,16 +531,16 @@ transaction instead of the current transaction.
                   
                   <p>
 Runs the block inside a transaction. Every <a
-href="Datastore.html#M000006">get</a>, <a
-href="Datastore.html#M000010">put</a>, and <a
-href="Datastore.html#M000012">delete</a> call in the block is made within
+href="Datastore.html#M000002">get</a>, <a
+href="Datastore.html#M000007">put</a>, and <a
+href="Datastore.html#M000009">delete</a> call in the block is made within
 the transaction, unless another transaction is explicitly specified.
 </p>
 <p>
 The block may raise any exception to roll back the transaction instead of
 committing it. If this happens, the transaction will be rolled back and the
 exception will be re-raised up to <a
-href="Datastore.html#M000029">transaction</a>&#8217;s caller.
+href="Datastore.html#M000024">transaction</a>&#8217;s caller.
 </p>
 <p>
 If you want to roll back intentionally, but don&#8217;t have an appropriate
@@ -563,10 +563,10 @@ include Put, Get, and Delete calls, of course.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000029_source')" id="l_M000029_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000024_source')" id="l_M000024_source">show</a>
                         
                     </p>
-                    <div id="M000029_source" class="dyn-source">
+                    <div id="M000024_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore.rb, line 207</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction</span>(<span class="ruby-identifier">retries</span>=<span class="ruby-value">0</span>)
     <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">retries</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>

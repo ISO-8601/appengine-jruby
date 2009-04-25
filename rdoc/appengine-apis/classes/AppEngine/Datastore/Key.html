@@ -66,11 +66,11 @@ href="http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/ap
     <div class="sectiontitle">Methods</div>
     <ul>
         
-        <li><a href="#M000033">from_path</a></li>
+        <li><a href="#M000031">from_path</a></li>
         
-        <li><a href="#M000030">id_or_name</a></li>
+        <li><a href="#M000029">id_or_name</a></li>
         
-        <li><a href="#M000032">new</a></li>
+        <li><a href="#M000030">new</a></li>
         
         <li><a href="#M000027">to_s</a></li>
         
@@ -93,7 +93,7 @@ href="http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/ap
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000033"></a><b>Key.from_path(parent=nil, kind, id, [kind, id]...) &rarr; Key
+                    <a name="M000031"></a><b>Key.from_path(parent=nil, kind, id, [kind, id]...) &rarr; Key
 Constructs a Key out of a path.
 </b>
                     
@@ -158,10 +158,10 @@ the <b>last</b>
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000033_source')" id="l_M000033_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000031_source')" id="l_M000031_source">show</a>
                         
                     </p>
-                    <div id="M000033_source" class="dyn-source">
+                    <div id="M000031_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 179</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_path</span>(<span class="ruby-identifier">parent_or_kind</span>, <span class="ruby-identifier">kind_or_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
           <span class="ruby-comment cmt"># Extract parent</span>
@@ -211,7 +211,7 @@ the <b>last</b>
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000032"></a><b>new</b>(encoded)
+                    <a name="M000030"></a><b>new</b>(encoded)
                     
                 </div>
                 
@@ -228,10 +228,10 @@ Creates a new <a href="Key.html">Key</a> from an encoded String.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000032_source')" id="l_M000032_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
                         
                     </p>
-                    <div id="M000032_source" class="dyn-source">
+                    <div id="M000030_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 150</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">encoded</span>)
           <span class="ruby-constant">JavaDatastore</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">stringToKey</span>(<span class="ruby-identifier">encoded</span>)
@@ -246,7 +246,7 @@ Creates a new <a href="Key.html">Key</a> from an encoded String.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000030"></a><b>id_or_name</b>()
+                    <a name="M000029"></a><b>id_or_name</b>()
                     
                 </div>
                 
@@ -255,10 +255,10 @@ Creates a new <a href="Key.html">Key</a> from an encoded String.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000029_source')" id="l_M000029_source">show</a>
                         
                     </p>
-                    <div id="M000030_source" class="dyn-source">
+                    <div id="M000029_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 143</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">id_or_name</span>
         <span class="ruby-identifier">name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">id</span>

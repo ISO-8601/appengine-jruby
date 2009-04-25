@@ -69,13 +69,13 @@ or (for compatibility with code already using logger.rb)
     <div class="sectiontitle">Methods</div>
     <ul>
         
-        <li><a href="#M000008"><<</a></li>
+        <li><a href="#M000012"><<</a></li>
         
-        <li><a href="#M000009">add</a></li>
+        <li><a href="#M000014">add</a></li>
         
-        <li><a href="#M000017">log</a></li>
+        <li><a href="#M000019">log</a></li>
         
-        <li><a href="#M000007">new</a></li>
+        <li><a href="#M000011">new</a></li>
         
     </ul>
     
@@ -108,7 +108,7 @@ or (for compatibility with code already using logger.rb)
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000007"></a><b>new</b>(*args)
+                    <a name="M000011"></a><b>new</b>(*args)
                     
                 </div>
                 
@@ -117,10 +117,10 @@ or (for compatibility with code already using logger.rb)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000007_source')" id="l_M000007_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
                         
                     </p>
-                    <div id="M000007_source" class="dyn-source">
+                    <div id="M000011_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/logger.rb, line 49</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
       <span class="ruby-keyword kw">super</span>(<span class="ruby-constant">STDERR</span>)
@@ -135,7 +135,7 @@ or (for compatibility with code already using logger.rb)
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000008"></a><b>&lt;&lt;</b>(msg)
+                    <a name="M000012"></a><b>&lt;&lt;</b>(msg)
                     
                 </div>
                 
@@ -144,10 +144,10 @@ or (for compatibility with code already using logger.rb)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000008_source')" id="l_M000008_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
                         
                     </p>
-                    <div id="M000008_source" class="dyn-source">
+                    <div id="M000012_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/logger.rb, line 53</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">msg</span>)
       <span class="ruby-identifier">write_log</span>(<span class="ruby-constant">INFO</span>, <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value str">&quot;&quot;</span>)
@@ -160,7 +160,7 @@ or (for compatibility with code already using logger.rb)
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000009"></a><b>add</b>(severity, msg=nil, progname=nil, &amp;block)
+                    <a name="M000014"></a><b>add</b>(severity, msg=nil, progname=nil, &amp;block)
                     
                 </div>
                 
@@ -168,7 +168,7 @@ or (for compatibility with code already using logger.rb)
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="Logger.html#M000017">log</a>
+                    <a href="Logger.html#M000019">log</a>
                     
                 </div>
                 
@@ -176,10 +176,10 @@ or (for compatibility with code already using logger.rb)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000009_source')" id="l_M000009_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
                         
                     </p>
-                    <div id="M000009_source" class="dyn-source">
+                    <div id="M000014_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/logger.rb, line 57</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add</span>(<span class="ruby-identifier">severity</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">progname</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
       <span class="ruby-identifier">severity</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">UNKNOWN</span>
@@ -203,14 +203,14 @@ or (for compatibility with code already using logger.rb)
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000017"></a><b>log</b>(severity, msg=nil, progname=nil, &amp;block)
+                    <a name="M000019"></a><b>log</b>(severity, msg=nil, progname=nil, &amp;block)
                     
                 </div>
                 
                 <div class="description">
                   
                   <p>
-Alias for <a href="Logger.html#M000009">add</a>
+Alias for <a href="Logger.html#M000014">add</a>
 </p>
 
                 </div>

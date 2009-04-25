@@ -64,25 +64,27 @@ href="http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/ap
     <div class="sectiontitle">Methods</div>
     <ul>
         
-        <li><a href="#M000049">[]</a></li>
+        <li><a href="#M000052">[]</a></li>
         
-        <li><a href="#M000053">[]=</a></li>
+        <li><a href="#M000059">[]=</a></li>
         
-        <li><a href="#M000055">delete</a></li>
+        <li><a href="#M000060">delete</a></li>
         
-        <li><a href="#M000068">each</a></li>
+        <li><a href="#M000072">each</a></li>
         
-        <li><a href="#M000045">get_property</a></li>
+        <li><a href="#M000051">get_property</a></li>
         
-        <li><a href="#M000058">has_property</a></li>
+        <li><a href="#M000067">has_property</a></li>
         
-        <li><a href="#M000057">has_property?</a></li>
+        <li><a href="#M000066">has_property?</a></li>
         
-        <li><a href="#M000066">merge!</a></li>
+        <li><a href="#M000071">merge!</a></li>
         
-        <li><a href="#M000050">set_property</a></li>
+        <li><a href="#M000054">set_property</a></li>
         
-        <li><a href="#M000059">update</a></li>
+        <li><a href="#M000073">to_hash</a></li>
+        
+        <li><a href="#M000069">update</a></li>
         
     </ul>
     
@@ -127,14 +129,14 @@ href="http://code.google.com/appengine/docs/java/javadoc/com/google/appengine/ap
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000049"></a><b>[]</b>(name)
+                    <a name="M000052"></a><b>[]</b>(name)
                     
                 </div>
                 
                 <div class="description">
                   
                   <p>
-Alias for <a href="Entity.html#M000045">get_property</a>
+Alias for <a href="Entity.html#M000051">get_property</a>
 </p>
 
                 </div>
@@ -146,14 +148,14 @@ Alias for <a href="Entity.html#M000045">get_property</a>
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000053"></a><b>[]=</b>(name, value)
+                    <a name="M000059"></a><b>[]=</b>(name, value)
                     
                 </div>
                 
                 <div class="description">
                   
                   <p>
-Alias for <a href="Entity.html#M000050">set_property</a>
+Alias for <a href="Entity.html#M000054">set_property</a>
 </p>
 
                 </div>
@@ -165,7 +167,7 @@ Alias for <a href="Entity.html#M000050">set_property</a>
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000055"></a><b>delete</b>(name)
+                    <a name="M000060"></a><b>delete</b>(name)
                     
                 </div>
                 
@@ -183,10 +185,10 @@ this name set, simply does nothing.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000055_source')" id="l_M000055_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000060_source')" id="l_M000060_source">show</a>
                         
                     </p>
-                    <div id="M000055_source" class="dyn-source">
+                    <div id="M000060_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 287</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>)
         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Symbol</span>
@@ -202,7 +204,7 @@ this name set, simply does nothing.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000068"></a><b>each</b>()
+                    <a name="M000072"></a><b>each</b>()
                     
                 </div>
                 
@@ -219,10 +221,10 @@ Iterates over all the properties in this <a href="Entity.html">Entity</a>.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000068_source')" id="l_M000068_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000072_source')" id="l_M000072_source">show</a>
                         
                     </p>
-                    <div id="M000068_source" class="dyn-source">
+                    <div id="M000072_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 317</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">proc</span>)  <span class="ruby-comment cmt"># :yields: name, value</span>
         <span class="ruby-identifier">getProperties</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">proc</span>)
@@ -235,7 +237,7 @@ Iterates over all the properties in this <a href="Entity.html">Entity</a>.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000045"></a><b>get_property</b>(name)
+                    <a name="M000051"></a><b>get_property</b>(name)
                     
                 </div>
                 
@@ -251,7 +253,7 @@ Returns the property with the specified name.
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="Entity.html#M000049">[]</a>
+                    <a href="Entity.html#M000052">[]</a>
                     
                 </div>
                 
@@ -259,10 +261,10 @@ Returns the property with the specified name.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000045_source')" id="l_M000045_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000051_source')" id="l_M000051_source">show</a>
                         
                     </p>
-                    <div id="M000045_source" class="dyn-source">
+                    <div id="M000051_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 247</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_property</span>(<span class="ruby-identifier">name</span>)
         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Symbol</span>
@@ -282,14 +284,14 @@ Returns the property with the specified name.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000058"></a><b>has_property</b>(name)
+                    <a name="M000067"></a><b>has_property</b>(name)
                     
                 </div>
                 
                 <div class="description">
                   
                   <p>
-Alias for <a href="Entity.html#M000057">has_property?</a>
+Alias for <a href="Entity.html#M000066">has_property?</a>
 </p>
 
                 </div>
@@ -301,7 +303,7 @@ Alias for <a href="Entity.html#M000057">has_property?</a>
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000057"></a><b>has_property?</b>(name)
+                    <a name="M000066"></a><b>has_property?</b>(name)
                     
                 </div>
                 
@@ -318,7 +320,7 @@ if a property has been specifically set to nil.
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="Entity.html#M000058">has_property</a>
+                    <a href="Entity.html#M000067">has_property</a>
                     
                 </div>
                 
@@ -326,10 +328,10 @@ if a property has been specifically set to nil.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000057_source')" id="l_M000057_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000066_source')" id="l_M000066_source">show</a>
                         
                     </p>
-                    <div id="M000057_source" class="dyn-source">
+                    <div id="M000066_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 298</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_property?</span>(<span class="ruby-identifier">name</span>)
         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Symbol</span>
@@ -345,14 +347,14 @@ if a property has been specifically set to nil.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000066"></a><b>merge!</b>(other)
+                    <a name="M000071"></a><b>merge!</b>(other)
                     
                 </div>
                 
                 <div class="description">
                   
                   <p>
-Alias for <a href="Entity.html#M000059">update</a>
+Alias for <a href="Entity.html#M000069">update</a>
 </p>
 
                 </div>
@@ -364,7 +366,7 @@ Alias for <a href="Entity.html#M000059">update</a>
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000050"></a><b>set_property</b>(name, value)
+                    <a name="M000054"></a><b>set_property</b>(name, value)
                     
                 </div>
                 
@@ -398,7 +400,7 @@ supports.
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="Entity.html#M000053">[]=</a>
+                    <a href="Entity.html#M000059">[]=</a>
                     
                 </div>
                 
@@ -406,10 +408,10 @@ supports.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000050_source')" id="l_M000050_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000054_source')" id="l_M000054_source">show</a>
                         
                     </p>
-                    <div id="M000050_source" class="dyn-source">
+                    <div id="M000054_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 275</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_property</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Symbol</span>
@@ -426,7 +428,36 @@ supports.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000059"></a><b>update</b>(other)
+                    <a name="M000073"></a><b>to_hash</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000073_source')" id="l_M000073_source">show</a>
+                        
+                    </p>
+                    <div id="M000073_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 321</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+        <span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">item</span>
+          <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-identifier">hash</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title">
+                    
+                    <a name="M000069"></a><b>update</b>(other)
                     
                 </div>
                 
@@ -444,7 +475,7 @@ href="Entity.html">Entity</a> or Hash
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="Entity.html#M000066">merge!</a>
+                    <a href="Entity.html#M000071">merge!</a>
                     
                 </div>
                 
@@ -452,13 +483,13 @@ href="Entity.html">Entity</a> or Hash
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000059_source')" id="l_M000059_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000069_source')" id="l_M000069_source">show</a>
                         
                     </p>
-                    <div id="M000059_source" class="dyn-source">
+                    <div id="M000069_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 308</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">other</span>)
-        <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">other</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
           <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span>
         <span class="ruby-keyword kw">end</span>
         <span class="ruby-keyword kw">self</span>

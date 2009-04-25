@@ -37,7 +37,7 @@ app&#8217;s administrators, and on behalf of users with Google Accounts.
 Apps use the <a href="Mail.html">Mail</a> service to send email messages.
 </p>
 <p>
-The <a href="Mail.html#M000016">Mail.send</a> method sends an email message
+The <a href="Mail.html#M000015">Mail.send</a> method sends an email message
 from the application. The From: address can be either the email address of
 a registered administrator (developer) of the application, or the current
 user if signed in with Google Accounts.
@@ -77,11 +77,11 @@ that the user created a new account with the application:
     <div class="sectiontitle">Methods</div>
     <ul>
         
-        <li><a href="#M000031">create_java_message</a></li>
+        <li><a href="#M000026">create_java_message</a></li>
         
-        <li><a href="#M000016">send</a></li>
+        <li><a href="#M000015">send</a></li>
         
-        <li><a href="#M000025">send_to_admins</a></li>
+        <li><a href="#M000022">send_to_admins</a></li>
         
     </ul>
     
@@ -102,7 +102,7 @@ that the user created a new account with the application:
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000031"></a><b>create_java_message</b>(options)
+                    <a name="M000026"></a><b>create_java_message</b>(options)
                     
                 </div>
                 
@@ -142,10 +142,10 @@ nil.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000031_source')" id="l_M000031_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000026_source')" id="l_M000026_source">show</a>
                         
                     </p>
-                    <div id="M000031_source" class="dyn-source">
+                    <div id="M000026_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/mail.rb, line 118</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_java_message</span>(<span class="ruby-identifier">options</span>)
       <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:text_body</span>] = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:text</span>)
@@ -178,7 +178,7 @@ nil.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000016"></a><b>send</b>(sender, to, subject, text, options={})
+                    <a name="M000015"></a><b>send</b>(sender, to, subject, text, options={})
                     
                 </div>
                 
@@ -211,7 +211,7 @@ addresses.
 <tt>text</tt> to nil and use the <tt>:html</tt> option.
 
 </dd>
-<dt>options</dt><dd>See <a href="Mail.html#M000031">create_java_message</a> for supported
+<dt>options</dt><dd>See <a href="Mail.html#M000026">create_java_message</a> for supported
 options.
 
 </dd>
@@ -224,10 +224,10 @@ options.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000016_source')" id="l_M000016_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000015_source')" id="l_M000015_source">show</a>
                         
                     </p>
-                    <div id="M000016_source" class="dyn-source">
+                    <div id="M000015_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/mail.rb, line 70</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">subject</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={})
       <span class="ruby-identifier">orig_options</span> = <span class="ruby-identifier">options</span>
@@ -249,7 +249,7 @@ options.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000025"></a><b>send_to_admins</b>(sender, subject, text, options={})
+                    <a name="M000022"></a><b>send_to_admins</b>(sender, subject, text, options={})
                     
                 </div>
                 
@@ -278,7 +278,7 @@ currently logged-in user.
 <tt>text</tt> to nil and use the <tt>:html</tt> option.
 
 </dd>
-<dt>options</dt><dd>See <a href="Mail.html#M000031">create_java_message</a> for supported
+<dt>options</dt><dd>See <a href="Mail.html#M000026">create_java_message</a> for supported
 options.
 
 </dd>
@@ -291,10 +291,10 @@ options.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000025_source')" id="l_M000025_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000022_source')" id="l_M000022_source">show</a>
                         
                     </p>
-                    <div id="M000025_source" class="dyn-source">
+                    <div id="M000022_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/mail.rb, line 96</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_to_admins</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">subject</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={})
       <span class="ruby-identifier">orig_options</span> = <span class="ruby-identifier">options</span>

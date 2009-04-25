@@ -62,9 +62,9 @@ Not indexed.
     <div class="sectiontitle">Methods</div>
     <ul>
         
-        <li><a href="#M000013">new_from_java</a></li>
+        <li><a href="#M000010">new_from_java</a></li>
         
-        <li><a href="#M000011">to_java</a></li>
+        <li><a href="#M000008">to_java</a></li>
         
     </ul>
     
@@ -85,7 +85,7 @@ Not indexed.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000013"></a><b>new_from_java</b>(text)
+                    <a name="M000010"></a><b>new_from_java</b>(text)
                     
                 </div>
                 
@@ -94,10 +94,10 @@ Not indexed.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000013_source')" id="l_M000013_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000010_source')" id="l_M000010_source">show</a>
                         
                     </p>
-                    <div id="M000013_source" class="dyn-source">
+                    <div id="M000010_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 79</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_from_java</span>(<span class="ruby-identifier">text</span>)
         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">getValue</span>)
@@ -112,7 +112,7 @@ Not indexed.
             <div class="method">
                 <div class="title">
                     
-                    <a name="M000011"></a><b>to_java</b>()
+                    <a name="M000008"></a><b>to_java</b>()
                     
                 </div>
                 
@@ -121,10 +121,10 @@ Not indexed.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000008_source')" id="l_M000008_source">show</a>
                         
                     </p>
-                    <div id="M000011_source" class="dyn-source">
+                    <div id="M000008_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/appengine-apis/datastore_types.rb, line 75</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_java</span>
         <span class="ruby-constant">JavaDatastore</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_java_string</span>)

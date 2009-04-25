@@ -22,7 +22,7 @@
               </tr>
               <tr>
                 <td>Modified:</td>
-                <td>Sat Apr 18 15:58:16 -0700 2009</td>
+                <td>Sat Apr 25 14:22:13 -0700 2009</td>
               </tr>
             </table>
           </td></tr>
@@ -45,6 +45,19 @@ href="http://code.google.com/p/appengine-jruby">code.google.com/p/appengine-jrub
 APIs and utilities for using JRuby on Google App Engine.
 </p>
 <p>
+To load the API stubs in IRB simply
+</p>
+<pre>
+  require 'rubygems'
+  require 'appengine-apis/local_boot'
+</pre>
+<p>
+This will configure access to the same Datastore as running
+</p>
+<pre>
+  $ dev_appserver.sh .
+</pre>
+<p>
 See these classes for an overview of each API:
 </p>
 <ul>
@@ -58,6 +71,9 @@ See these classes for an overview of each API:
 
 </li>
 <li><a href="../classes/AppEngine/Mail.html">AppEngine::Mail</a>
+
+</li>
+<li><a href="../classes/AppEngine/Memcache.html">AppEngine::Memcache</a>
 
 </li>
 <li><a href="../classes/AppEngine/URLFetch.html">AppEngine::URLFetch</a>
