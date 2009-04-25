@@ -9,10 +9,12 @@ lib/appengine-apis/datastore.rb
 lib/appengine-apis/datastore_types.rb
 lib/appengine-apis/logger.rb
 lib/appengine-apis/mail.rb
+lib/appengine-apis/memcache.rb
 lib/appengine-apis/merb-logger.rb
 lib/appengine-apis/testing.rb
 lib/appengine-apis/urlfetch.rb
 lib/appengine-apis/users.rb
+lib/appengine-apis/java/com/ribrdb/appengine/memcache/MarshaledObject.class
 script/console
 script/destroy
 script/generate
@@ -20,6 +22,7 @@ spec/datastore_spec.rb
 spec/datastore_types_spec.rb
 spec/logger_spec.rb
 spec/mail_spec.rb
+spec/memcache_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 spec/urlfetch_spec.rb

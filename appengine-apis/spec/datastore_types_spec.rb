@@ -194,5 +194,16 @@ describe AppEngine::Datastore::Entity do
     end
     props.should == {}
   end
-    
+  
+  it "should support update" do
+    @entity.update('foo' => 'bar', 'count' => 3)
+    @entity[:foo].should == 'bar'
+    @entity[:count].should == 3
+  end
+  
+  it "should support to_hash" do
+    props = {'foo' => 'bar', 'count' => 3}
+    @entity.merge!(props)
+    @entity.to_hash.should == props
+  end
 end

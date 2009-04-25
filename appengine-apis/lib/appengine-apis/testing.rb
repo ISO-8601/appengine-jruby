@@ -43,7 +43,9 @@ module AppEngine
       def initialize
         @appid = "test"
         @version = "1.0"
-        @auth_domain = "gmail.com"
+        @auth_domain = @request_namespace = "gmail.com"
+        @default_namespace = ""
+        @email = ""
       end
       
       def getAppId
@@ -59,7 +61,7 @@ module AppEngine
       end
       
       def isLoggedIn
-        !(@email.nil? || @auth_domain.nil?)
+        !(@email.nil? || @auth_domain.nil? || @email.empty?)
       end
       
       def isAdmin

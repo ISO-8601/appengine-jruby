@@ -19,6 +19,7 @@
 # Switches the Merb Logger class to use the Google App Engine logging API.
 
 require 'merb-core/logger'
+require 'appengine-apis/apiproxy.rb'
 
 module Merb  # :nodoc:
   

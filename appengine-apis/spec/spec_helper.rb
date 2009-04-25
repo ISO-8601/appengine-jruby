@@ -65,7 +65,7 @@ class ProtoMatcher
   end
 end
 
-Spec::Runner.configure do |config|
+module ProtoMethods
   def proto(klass, hash)
     ProtoMatcher.new(klass, hash)
   end
@@ -78,5 +78,9 @@ Spec::Runner.configure do |config|
         include AppEngine::ApiProxy::Delegate
       end
     end
-  end
+  end  
+end
+
+Spec::Runner.configure do |config|
+  config.include(ProtoMethods)
 end

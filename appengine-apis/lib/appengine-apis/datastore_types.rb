@@ -306,7 +306,7 @@ module AppEngine
       # Add the properties from +other+ to this Entity.
       # Other may be an Entity or Hash
       def update(other)
-        hash.each do |name, value|
+        other.each do |name, value|
           self[name] = value
         end
         self
@@ -316,6 +316,14 @@ module AppEngine
       # Iterates over all the properties in this Entity.
       def each(&proc)  # :yields: name, value
         getProperties.each(&proc)
+      end
+      
+      def to_hash
+        inject({}) do |hash, item|
+          name, value = item
+          hash[name] = value
+          hash
+        end
       end
     end
     
