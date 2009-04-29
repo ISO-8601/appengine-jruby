@@ -22,17 +22,6 @@ describe DataMapper::Adapters::AppEngineAdapter do
   before :all do
     AppEngine::Testing.install_test_env
     AppEngine::Testing.install_test_datastore
-    
-    class ::Heffalump
-      include DataMapper::Resource
-
-      property :id,        Serial
-      property :color,     String
-      property :num_spots, Integer
-      property :striped,   Boolean
-    end
-
-    @model = Heffalump
   end
 
   before :all do
@@ -40,15 +29,6 @@ describe DataMapper::Adapters::AppEngineAdapter do
     @repository = DataMapper.repository(@adapter.name)
     
     AppEngine::Testing.install_test_datastore
-    @heff1 = @model.create(
-        :color => 'Black', :num_spots => 0, :striped => true)
-    @heff2 = @model.create(
-        :color => 'Brown', :num_spots => 25, :striped => false)
-    @heff3 = @model.create(
-        :color => 'Dark Blue', :num_spots => nil, :striped => false)
-
-    @string_property  = @model.color
-    @integer_property = @model.num_spots
   end
   
   def pending_if(message, boolean = true)

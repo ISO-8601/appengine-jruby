@@ -17,7 +17,11 @@
 #
 # Datamapper adapter for Google App Engine
 
+require 'rubygems'
+gem 'appengine-apis', '~> 0.0.3'
+
 require 'appengine-apis/datastore'
+require 'dm-core'
 
 module DataMapper
   module Adapters
@@ -304,25 +308,23 @@ module DataMapper
       
         def run
           key_prop = @model.key(@adapter_name)[0].field
-          get_entities.map do |entity|
-            entity_to_model(key_prop, entity)
+          hashes = get_entities.map do |entity|
+            entity_to_hash(key_prop, entity)
           end
+          @model.load(hashes, @dm_query)
         end
       
-        def entity_to_model(key_prop, entity)
+        def entity_to_hash(key_prop, entity)
           # TODO: This is broken. We should be setting all properties
           return if entity.nil?
           key = entity.get_key
-          values = @dm_query.fields.map do |property|
+          hash = entity.to_hash
+          @dm_query.fields.each do |property|
             if property.key?
-              key.get_name || key.get_id
-            else
-              entity.get_property(property.field)
+              hash[property.field] = key.get_name || key.get_id
             end
           end
-          resource = @model.load(values, @dm_query)
-          resource.instance_variable_set :@__entity__, entity
-          resource
+          hash
         end
       
         def keys
@@ -331,6 +333,7 @@ module DataMapper
       end
     end
     
-    const_added(:AppEngineAdapter)
+    # required naming scheme
+    AppengineAdapter = AppEngineAdapter
   end
 end

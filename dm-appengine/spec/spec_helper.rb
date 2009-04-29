@@ -19,13 +19,10 @@ $TESTING=true
 $:.push File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'rubygems'
-require 'appengine-apis/testing'
-gem 'dm-core', '~> 0.10.0'
-require 'dm-core'
-require 'dm-core/core_ext/symbol'
 require 'dm-appengine'
+require 'appengine-apis/testing'
 
 ADAPTERS = ['default']
-PRIMARY = {'default' => "app_engine://memory"}
+PRIMARY = {'default' => "appengine://memory"}
 
 DataMapper::Logger.new(nil, :debug)
