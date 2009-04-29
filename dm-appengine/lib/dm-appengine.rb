@@ -58,7 +58,7 @@ module DataMapper
           repository = resource.repository
           model = resource.model
           attributes = resource.attributes
-          
+          properties = model.properties(repository.name)
           
           kind = self.kind(model)
           keys = model.key(repository.name)
@@ -74,7 +74,9 @@ module DataMapper
           end
           
           attributes.each do |name, value|
-            entity.set_property(name.to_s, value)
+            property = properties[name]
+            value = convert_value(property, value)
+            entity.set_property(property.field, value)
           end
           entities << entity
           created += 1
@@ -96,7 +98,9 @@ module DataMapper
       end
 
       def update(attributes, collection)
-        attributes = attributes_as_fields(attributes)
+        attributes = attributes.map do |property, value|
+          [property.field, convert_value(property, value)]
+        end
         entities = collection.collect do |resource|
           entity = resource.instance_variable_get :@__entity__
           entity.update(attributes)
@@ -104,6 +108,14 @@ module DataMapper
 
         Datastore.put(entities)
         entities.size
+      end
+
+      def convert_value(property, value)
+        if property.type == DataMapper::Types::Text
+          AppEngine::Datastore::Text.new(value)
+        else
+          value
+        end
       end
 
       def delete(collection)
@@ -308,10 +320,15 @@ module DataMapper
       
         def run
           key_prop = @model.key(@adapter_name)[0].field
-          hashes = get_entities.map do |entity|
+          entities = get_entities
+          hashes = entities.map do |entity|
             entity_to_hash(key_prop, entity)
           end
-          @model.load(hashes, @dm_query)
+          resources = @model.load(hashes, @dm_query)
+          resources.zip(entities) do |resource, entity|
+            resource.instance_variable_set :@__entity__, entity
+          end
+          resources
         end
       
         def entity_to_hash(key_prop, entity)

@@ -18,6 +18,13 @@
 require File.dirname(__FILE__) + '/spec_helper'
 require 'dm-core/spec/adapter_shared_spec'
 
+class TextTest
+  include DataMapper::Resource
+  
+  property :id, Serial
+  property :text, Text
+end
+
 describe DataMapper::Adapters::AppEngineAdapter do
   before :all do
     AppEngine::Testing.install_test_env
@@ -40,4 +47,20 @@ describe DataMapper::Adapters::AppEngineAdapter do
   end
 
   it_should_behave_like 'An Adapter'
+  
+  describe 'create' do
+    it 'should support Text' do
+      a = TextTest.new(:text => "a" * 1024)
+      a.save
+    end
+  end
+  
+  describe 'update' do
+    it 'should support Text' do
+      a = TextTest.new(:text => "a" * 1024)
+      a.save
+      a.text = "A" * 1024
+      a.save
+    end
+  end
 end
