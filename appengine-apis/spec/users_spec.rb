@@ -55,4 +55,15 @@ describe AppEngine::Users do
     login.should =~ /foobar/
     logout.should =~ /foobaz/
   end
+  
+  it 'should support new without auth domain' do
+    user = AppEngine::Users::User.new('foo@example.com')
+    user.auth_domain.should == 'gmail.com'
+  end
+  
+  
+  it 'should support new with auth domain' do
+    user = AppEngine::Users::User.new('foo@example.com', 'example.com')
+    user.auth_domain.should == 'example.com'
+  end
 end

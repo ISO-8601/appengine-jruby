@@ -78,16 +78,30 @@ module AppEngine
       alias == equals?
       alias to_s toString
       
-      if nil  # rdoc only
+      class << self
+        alias java_new new  # :nodoc:
+        
         # Creates a new User.
         #
         # Args:
         # - email: a non-nil email address.
-        # - auth_domain: a non-nil domain name into which this user has
+        # - auth_domain: an optinoal domain name into which this user has
         #   authenticated, or "gmail.com" for normal Google authentication.
-        def initialize(email, auth_domain)
+        def new(email, auth_domain=nil)
+          unless auth_domain
+            env = AppEngine::ApiProxy.current_environment
+            auth_domain = if env
+              env.getAuthDomain
+            else
+              'gmail.com'
+            end
+          end
+          
+          java_new(email, auth_domain)
         end
-        
+      end
+      
+      if nil  # rdoc only
         # Return this user's nickname. The nickname will be a unique, human
         # readable identifier for this user with respect to this application.
         # It will be an email address for some users, but not all.
