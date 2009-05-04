@@ -204,7 +204,7 @@ module Datastore
   # aren't safe to occur multiple times. However, this doesn't
   # include Put, Get, and Delete calls, of course.
   #
-  def transaction(retries=0)
+  def transaction(retries=3)
     while retries >= 0
       retries -= 1
       tx = begin_transaction
