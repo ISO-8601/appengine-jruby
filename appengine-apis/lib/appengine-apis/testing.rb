@@ -126,8 +126,7 @@ module AppEngine
       #
       # You may call this multiple times to reset to a new in-memory datastore.
       def install_test_datastore
-        self.app_dir = '.' if app_dir.nil?
-        delegate = factory.create
+        delegate = install_api_stubs
         lds = Java.ComGoogleAppengineApiDatastoreDev.LocalDatastoreService
         
         delegate.set_property(
@@ -149,9 +148,15 @@ module AppEngine
       # instead of dev_appserver. In that case you will need to install
       # and configure a test environment for each request.
       def install_api_stubs
+        current_delegate = ApiProxy.delegate
+        current_delegate.stop if current_delegate.respond_to? :stop
+
         self.app_dir = '.' if app_dir.nil?
         delegate = factory.create
         ApiProxy::setDelegate(delegate)
+        at_exit do
+          delegate.stop
+        end
         delegate
       end
       
