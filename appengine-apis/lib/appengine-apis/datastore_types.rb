@@ -247,12 +247,7 @@ module AppEngine
       def get_property(name)
         name = name.to_s if name.kind_of? Symbol
         prop = Datastore.convert_exceptions { getProperty(name) }
-        ruby_type = SPECIAL_JAVA_TYPES[prop.class]
-        if ruby_type
-          ruby_type.new_from_java(prop)
-        else
-          prop
-        end
+        java_value_to_ruby(prop)
       end
       alias :[] :get_property
 
@@ -314,8 +309,10 @@ module AppEngine
       alias merge! update
       
       # Iterates over all the properties in this Entity.
-      def each(&proc)  # :yields: name, value
-        getProperties.each(&proc)
+      def each()  # :yields: name, value
+        getProperties.each do |name, value|
+          yield name, java_value_to_ruby(value)
+        end
       end
       
       def to_hash
@@ -323,6 +320,15 @@ module AppEngine
           name, value = item
           hash[name] = value
           hash
+        end
+      end
+      
+      def java_value_to_ruby(prop)
+        ruby_type = SPECIAL_JAVA_TYPES[prop.class]
+        if ruby_type
+          ruby_type.new_from_java(prop)
+        else
+          prop
         end
       end
     end
