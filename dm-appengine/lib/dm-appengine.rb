@@ -20,6 +20,7 @@
 require 'rubygems'
 gem 'appengine-apis', '~> 0.0.3'
 
+require 'appengine-apis/local_boot'
 require 'appengine-apis/datastore'
 require 'dm-core'
 
