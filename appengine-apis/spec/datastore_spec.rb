@@ -35,6 +35,16 @@ describe AppEngine::Datastore do
     stored[:b].should == "b"
   end
   
+  it "should support Text" do
+    entity = Datastore::Entity.new("Test")
+    entity[:a] = Datastore::Text.new("a")
+    Datastore.put(entity)
+    stored = Datastore.get(entity.key)
+    stored[:a].should be_a(Datastore::Text)
+    stored[:a].should == "a"
+    stored.to_hash['a'].should == "a"
+  end
+  
   it "should put many" do
     a = Datastore::Entity.new("A")
     b = Datastore::Entity.new("B")

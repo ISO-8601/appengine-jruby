@@ -207,3 +207,11 @@ describe AppEngine::Datastore::Entity do
     @entity.to_hash.should == props
   end
 end
+
+describe AppEngine::Datastore::Text do
+  it "should support to_s" do
+    t = AppEngine::Datastore::Text.new("foo")
+    t.to_s.should == t
+  end
+end
+
