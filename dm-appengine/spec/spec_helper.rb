@@ -20,7 +20,6 @@ $:.push File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'rubygems'
 require 'dm-appengine'
-require 'appengine-apis/testing'
 
 ADAPTERS = ['default']
 PRIMARY = {'default' => "appengine://memory"}

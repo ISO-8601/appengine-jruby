@@ -61,6 +61,9 @@ describe DataMapper::Adapters::AppEngineAdapter do
       a.save
       a.text = "A" * 1024
       a.save
+      a.reload
+      a.text.should be_a(AppEngine::Datastore::Text)
+      a.text.should be_a(String)
     end
   end
 end
