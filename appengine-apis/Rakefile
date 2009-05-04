@@ -14,7 +14,6 @@ end
 $hoe = Hoe.new('appengine-apis', AppEngine::VERSION) do |p|
   p.developer('Ryan Brown', 'ribrdb@gmail.com')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.post_install_message = 'PostInstall.txt' 
   p.rubyforge_name       = 'appengine-jruby'
   # p.extra_deps         = [
   #   ['activesupport','>= 2.0.2'],
